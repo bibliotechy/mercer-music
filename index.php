@@ -1,21 +1,26 @@
 <?php
 
-class Api {
+$f3 =  require('../fatfree/lib/base.php');
+$f3->map('/songs/@song', 'Song');
+$f3->map('/discography/@song', 'DiscographySong');
+$f3->run();
 
+class Api {	
 
+  public function __construct() {
+    $this->db = new DB\SQL(
+      'mysql:host=localhost;port=3306;dbname=special_collections',
+      'root', 'mysqlroot');
+    }
+
+   
 }
 
 class Song extends Api{
-  
   public $song = array();
-  
+    
   public function get($f3) {
-    $this->db=new DB\SQL(
-      'mysql:host=localhost;port=3306;dbname=special_collections',
-      'root', 'mysqlroot');
-
     $this->song = Song::buildFullJSON($f3, $this->song, $this->db);
-
     //return the data about the song as json
     echo json_encode($this->song);
   }
@@ -31,7 +36,6 @@ class Song extends Api{
   public static function getSongBaseInfo($f3, $song, $db) {
     $sql = "SELECT * FROM ms WHERE ID =" . $f3->get('PARAMS.song') . " AND Suppress <> 1";
     $f3->set('result',$db->exec($sql));
-
     foreach ($f3->get('result')  as $key => $value) {
       $song[$key] = $value ;
     }
@@ -41,7 +45,6 @@ class Song extends Api{
   public static function getAlternateTitles($f3, $song, $db) {
     $sql = "SELECT Title FROM ms_alt WHERE ParentID = " . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
-
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
         $song['0']['AlternateTitles'][$key] = $value;
@@ -56,7 +59,6 @@ class Song extends Api{
             JOIN ms_j_songcitation j on j.CitationID = c.ID 
             WHERE j.SongID =" . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
-   
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
         $song['0']['Citations'][$key] = $value;
@@ -71,57 +73,87 @@ class Song extends Api{
             JOIN ms_j_songholding j ON j.holdingID = h.ID
             WHERE j.SongID =" . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
-    
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
         $song['0']['Holdings'][$key] = $value;
       }
     }
     return $song;
-
-
   }
-
+ 
+ public static function getSongTitle($f3, $song, $db) {
+ 	$sql = "SELECT Title FROM  ms
+ 	        WHERE ID = " . $f3->get('PARAMS.song');
+    $f3->set('result',$db->exec($sql));
+    foreach ($f3->get('result')  as $key => $value) {
+      $song['Title'] = $value ;
+	}
+	return $song;
+ }
+ 
 }
 
-class DiscographySong {
-
+class DiscographySong extends Api{
   public $song = array();
   
   public function get($f3) {
-    $this->db=new DB\SQL(
-      'mysql:host=localhost;port=3306;dbname=special_collections',
-      'root', 'mysqlroot');
-
     $this->song = DiscographySong::buildFullJSON($f3, $this->song, $this->db);
-
     //return the data about the song as json
     echo json_encode($this->song);
   }
 
-
   public static function buildFullJSON($f3, $song, $db) {
-    $song = DiscographySong::getBaseSongInfo($f3, $song, $db);
+    $song = DiscographySong::getRecordingsInfo($f3, $song, $db);
+	foreach ($song['recordings'] as $recording){
+      	if ($recording['songType'] != '1') {
+          $song = DiscographySong::getSongTitle($f3, $song, $db);
+		}
+        else {
+          $song = Song::getSongTitle($f3, $song, $db);
+        }
+		break;
+	  }
+	$song = DiscographySong::getHoldingsInfo($f3, $song, $db);
     return $song;
-  } 
+  }
 
-  public static function getBaseSongInfo($f3, $song, $db) {
-    $sql = "SELECT * FROM md_sound 
-            WHERE ID = " . $f3->get('PARAMS.song');
+  public static function getRecordingsInfo($f3, $song, $db) {
+    $sql = "SELECT * FROM md_sound  
+            WHERE songID = " . $f3->get('PARAMS.song') .
+			" AND Suppress <> 1";
     $f3->set('result',$db->exec($sql));
-    foreach ($f3->get('result')  as $key => $value) {
-      $song[$key] = $value ;
+    $song['recordings'] = array();
+    foreach ($f3->get('result') as $key => $value ) {
+      $song['recordings'][$value['ID']] = $value ;
+		}
+    return $song;
+  }
+
+  public static function getSongTitle($f3, $song, $db) {
+  	$sql = "SELECT Title from md_song
+  	        WHERE ID = " . $f3->get("PARAMS.song");
+	$f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result')  as $key => $value) {
+      $song['Title'] = $value ;
+	}
+	return $song;
+  }
+  
+  public static function getHoldingsInfo($f3, $song, $db) {
+    $sql = "SELECT h.name, j.soundID 
+            FROM md_sound_holdings h 
+            JOIN md_sound_j_soundholding j ON j.holdingID = h.ID
+            JOIN md_sound s ON s.ID = j.soundID
+            WHERE s.songID =" . $f3->get('PARAMS.song');
+    $f3->set('result',$db->exec($sql));
+    if ($f3->get('result')) {
+      foreach ($f3->get('result')  as $value) {
+        $song['recordings'][$value['soundID']]['Holdings'][] = $value['name'];
+      }
     }
     return $song;
   }
 }
-
-$f3 =  require('../fatfree/lib/base.php');
-$f3->map('/songs/@song', 'Song');
-$f3->map('/discography/@song', 'DiscographySong');
-$f3->run();
-
-
 
 ?>
 
