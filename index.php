@@ -3,22 +3,22 @@
 $f3 =  require('../fatfree/lib/base.php');
 $f3->map('/songs/@song', 'Song');
 $f3->map('/discography/@song', 'DiscographySong');
+$f3->map('/movies/@movie', 'Movie');
+$f3->map('/shows/@show', 'Show');
 $f3->run();
 
-class Api {	
+class Api {
+  public $song = array();	
 
   public function __construct() {
     $this->db = new DB\SQL(
       'mysql:host=localhost;port=3306;dbname=special_collections',
       'root', 'mysqlroot');
     }
-
-   
 }
 
 class Song extends Api{
-  public $song = array();
-    
+     
   public function get($f3) {
     $this->song = Song::buildFullJSON($f3, $this->song, $this->db);
     //return the data about the song as json
@@ -86,7 +86,7 @@ class Song extends Api{
  	        WHERE ID = " . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
     foreach ($f3->get('result')  as $key => $value) {
-      $song['Title'] = $value ;
+      $song['Title'] = $value['Title'] ;
 	}
 	return $song;
  }
@@ -94,9 +94,8 @@ class Song extends Api{
 }
 
 class DiscographySong extends Api{
-  public $song = array();
   
-  public function get($f3) {
+   public function get($f3) {
     $this->song = DiscographySong::buildFullJSON($f3, $this->song, $this->db);
     //return the data about the song as json
     echo json_encode($this->song);
@@ -134,7 +133,7 @@ class DiscographySong extends Api{
   	        WHERE ID = " . $f3->get("PARAMS.song");
 	$f3->set('result',$db->exec($sql));
 	foreach ($f3->get('result')  as $key => $value) {
-      $song['Title'] = $value ;
+      $song['Title'] = $value['Title'];
 	}
 	return $song;
   }
@@ -154,6 +153,113 @@ class DiscographySong extends Api{
     return $song;
   }
 }
+
+class Movie extends Api {
+  public $movie = array();
+  	
+  public function get($f3) {
+    $this->movie = Movie::buildFullJSON($f3, $this->movie, $this->db);
+    //return the data about the song as json
+    echo json_encode($this->movie);
+  }
+  
+  public static function buildFullJSON($f3, $movie, $db) {
+  	$movie = Movie::getMovieBaseInfo($f3, $movie, $db);
+	$movie = Movie::getHoldingsInfo($f3, $movie, $db);
+	$movie = Movie::getSongsInMovie($f3, $movie, $db);
+    return $movie;
+  }
+  
+  
+  public static function getMovieBaseInfo($f3, $movie, $db) {
+  	$sql = "SELECT * 
+  	        FROM ms_movies 
+  	        WHERE ID = " . $f3->get('PARAMS.movie');
+	$f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$movie[$key] = $value;
+	}
+	return $movie;
+  }
+  
+  public static function getHoldingsInfo($f3, $movie, $db) {
+  	$sql = "SELECT h.Name 
+  	        FROM ms_movies_holdings h 
+  	        JOIN ms_j_movieholding j on j.holdingID = h.ID 
+            WHERE  j.movieID = " . $f3->get('PARAMS.movie');
+    $f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$movie['Holdings'][] = $value;
+	}
+	return $movie;
+  }
+  
+  public static function getSongsInMovie($f3, $movie, $db) {
+  	$sql = "SELECT s.ID, s.Title 
+  	        FROM ms s 
+  	        JOIN ms_j_songmovie j on s.ID = j.songID
+  	        WHERE j.movieID = " . $f3->get('PARAMS.movie');
+	$f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$movie['Songs'][] = $value;
+	}
+	return $movie;
+  }
+}
+
+class Show extends Api {
+  public $show = array();
+  	
+  public function get($f3) {
+    $this->show = Show::buildFullJSON($f3, $this->show, $this->db);
+    //return the data about the song as json
+    echo json_encode($this->show);
+  }
+  
+  public static function buildFullJSON($f3, $show, $db) {
+  	$show = Show::getShowBaseInfo($f3, $show, $db);
+	$show = Show::getHoldingsInfo($f3, $show, $db);
+	$show = Show::getSongsInShow($f3, $show, $db);
+    return $show;
+  }
+  
+  
+  public static function getShowBaseInfo($f3, $show, $db) {
+  	$sql = "SELECT * 
+  	        FROM ms_shows 
+  	        WHERE ID = " . $f3->get('PARAMS.show');
+	$f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$show[] = $value;
+	}
+	return $show;
+  }
+  
+  public static function getHoldingsInfo($f3, $show, $db) {
+  	$sql = "SELECT h.Name 
+  	        FROM ms_shows_holdings h 
+  	        JOIN ms_j_showholding j on j.holdingID = h.ID 
+            WHERE  j.showID = " . $f3->get('PARAMS.show');
+    $f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$show['Holdings'][] = $value;
+	}
+	return $show;
+  }
+  
+  public static function getSongsInShow($f3, $show, $db) {
+  	$sql = "SELECT s.ID, s.Title 
+  	        FROM ms s 
+  	        JOIN ms_j_songshow j on s.ID = j.songID
+  	        WHERE j.showID = " . $f3->get('PARAMS.show');
+	$f3->set('result',$db->exec($sql));
+	foreach ($f3->get('result') as $key => $value) {
+		$show['Songs'][] = $value;
+	}
+	return $show;
+  }
+}
+
 
 ?>
 
