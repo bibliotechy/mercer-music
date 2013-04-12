@@ -2,7 +2,7 @@
 
 class Show extends Api {
  
-  public static function buildFullJSON($f3, $show, $db) {
+  public static function buildResultArray($f3, $show, $db) {
   	$show = Show::getShowBaseInfo($f3, $show, $db);
 	$show = Show::getHoldingsInfo($f3, $show, $db);
 	$show = Show::getSongsInShow($f3, $show, $db);

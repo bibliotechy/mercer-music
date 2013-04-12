@@ -2,7 +2,7 @@
 
 class Movie extends Api {
   
-  public static function buildFullJSON($f3, $movie, $db) {
+  public static function buildResultArray($f3, $movie, $db) {
   	$movie = Movie::getMovieBaseInfo($f3, $movie, $db);
 	$movie = Movie::getHoldingsInfo($f3, $movie, $db);
 	$movie = Movie::getSongsInMovie($f3, $movie, $db);

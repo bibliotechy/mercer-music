@@ -2,7 +2,7 @@
 
 class DiscographySong extends Api{
   
-  public static function buildFullJSON($f3, $song, $db) {
+  public static function buildResultArray($f3, $song, $db) {
     $song = DiscographySong::getRecordingsInfo($f3, $song, $db);
 	foreach ($song['recordings'] as $recording){
       	if ($recording['songType'] != '1') {

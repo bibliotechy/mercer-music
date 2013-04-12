@@ -2,7 +2,7 @@
 
 class Song extends Api{
      
-    public static function buildFullJSON($f3, $song, $db) {
+    public static function buildResultArray($f3, $song, $db) {
     $song = Song::getSongBaseInfo($f3, $song, $db);
     $song = Song::getAlternateTitles($f3, $song, $db);
     $song = Song::getCitationsInfo($f3, $song, $db);

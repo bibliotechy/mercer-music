@@ -18,7 +18,7 @@ class Api {
    */
   public function get($f3) {
     $name = get_called_class();
-    $this->result = $name::buildFullJSON($f3, $this->result, $this->db);
+    $this->result = $name::buildResultArray($f3, $this->result, $this->db);
     //since we are sening JSON, let's do it right.
     header('Content-type: application/json');
     //return the data as JSON
