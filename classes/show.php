@@ -1,21 +1,13 @@
 <?php
 
 class Show extends Api {
-  public $show = array();
-  	
-  public function get($f3) {
-    $this->show = Show::buildFullJSON($f3, $this->show, $this->db);
-    //return the data about the song as json
-    echo json_encode($this->show);
-  }
-  
+ 
   public static function buildFullJSON($f3, $show, $db) {
   	$show = Show::getShowBaseInfo($f3, $show, $db);
 	$show = Show::getHoldingsInfo($f3, $show, $db);
 	$show = Show::getSongsInShow($f3, $show, $db);
     return $show;
   }
-  
   
   public static function getShowBaseInfo($f3, $show, $db) {
   	$sql = "SELECT * 
@@ -52,5 +44,4 @@ class Show extends Api {
 	return $show;
   }
 }
-
 ?>

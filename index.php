@@ -7,10 +7,11 @@ $f3 =  require('../fatfree/lib/base.php');
 $f3->set('AUTOLOAD', 'classes/');
 
 // set up routing for API to each type of information
-$f3->map('/songs/@song', 'Song');
-$f3->map('/discography/@song', 'DiscographySong');
-$f3->map('/movies/@movie', 'Movie');
-$f3->map('/shows/@show', 'Show');
+$f3->map('/api/songs/@song', 'Song');
+$f3->map('/api/discography/@song', 'DiscographySong');
+$f3->map('/api/movies/@movie', 'Movie');
+$f3->map('/api/shows/@show', 'Show');
+$f3->route('/GET /songs/@song', 'WebPage->song');
 $f3->run();
 
 ?>

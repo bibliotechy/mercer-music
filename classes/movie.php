@@ -1,13 +1,6 @@
 <?php
 
 class Movie extends Api {
-  public $movie = array();
-  	
-  public function get($f3) {
-    $this->movie = Movie::buildFullJSON($f3, $this->movie, $this->db);
-    //return the data about the song as json
-    echo json_encode($this->movie);
-  }
   
   public static function buildFullJSON($f3, $movie, $db) {
   	$movie = Movie::getMovieBaseInfo($f3, $movie, $db);
@@ -15,7 +8,6 @@ class Movie extends Api {
 	$movie = Movie::getSongsInMovie($f3, $movie, $db);
     return $movie;
   }
-  
   
   public static function getMovieBaseInfo($f3, $movie, $db) {
   	$sql = "SELECT * 
@@ -52,7 +44,4 @@ class Movie extends Api {
 	return $movie;
   }
 }
-
-
-
 ?>

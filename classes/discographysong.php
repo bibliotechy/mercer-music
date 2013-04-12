@@ -2,12 +2,6 @@
 
 class DiscographySong extends Api{
   
-   public function get($f3) {
-    $this->song = DiscographySong::buildFullJSON($f3, $this->song, $this->db);
-    //return the data about the song as json
-    echo json_encode($this->song);
-  }
-
   public static function buildFullJSON($f3, $song, $db) {
     $song = DiscographySong::getRecordingsInfo($f3, $song, $db);
 	foreach ($song['recordings'] as $recording){

@@ -2,13 +2,7 @@
 
 class Song extends Api{
      
-  public function get($f3) {
-    $this->song = Song::buildFullJSON($f3, $this->song, $this->db);
-    //return the data about the song as json
-    echo json_encode($this->song);
-  }
-
-  public static function buildFullJSON($f3, $song, $db) {
+    public static function buildFullJSON($f3, $song, $db) {
     $song = Song::getSongBaseInfo($f3, $song, $db);
     $song = Song::getAlternateTitles($f3, $song, $db);
     $song = Song::getCitationsInfo($f3, $song, $db);
@@ -73,7 +67,5 @@ class Song extends Api{
 	}
 	return $song;
  }
- 
 }
-
 ?>
