@@ -10,6 +10,9 @@ $f3->set('AUTOLOAD', 'classes/');
 $f3->route('/GET /api/songs/search/@query', 'SongSearch->get');
 $f3->route('/GET /api/songs/browse/@letter', 'SongBrowse->get');
 $f3->map('/api/songs/@song', 'Song');
+
+$f3->route('/GET /api/discography/search/@query', 'DiscographySearch->get');
+$f3->route('/GET /api/discography/browse/@letter', 'DiscographyBrowse->get');
 $f3->map('/api/discography/@song', 'DiscographySong');
 $f3->map('/api/movies/@movie', 'Movie');
 $f3->map('/api/shows/@show', 'Show');
