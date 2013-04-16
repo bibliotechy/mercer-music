@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="song in discography | orderBy:'Title'" class="thumbnail">
+          <a href="#/discography/{{song.ID}}">{{song.Title}}</a>
+          
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

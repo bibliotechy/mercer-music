@@ -14,6 +14,7 @@ $f3->map('/songs/@song', 'Song');
 
 $f3->route('/GET /discography/search/@query', 'DiscographySearch->get');
 $f3->route('/GET /discography/browse/@letter', 'DiscographyBrowse->get');
+$f3->route('/GET /discography', 'BrowseAllDiscography->get');
 $f3->map('/discography/@song', 'DiscographySong');
 
 $f3->route('/GET /movies', 'BrowseAllMovies->get');

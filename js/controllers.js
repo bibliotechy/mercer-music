@@ -26,6 +26,14 @@ function ShowList($scope, $http) {
   $scope.orderProp = 'Title';
 }
 
+function DiscographyList($scope, $http) {
+  $http.get('/m2/api/discography').success(function(data) {
+    $scope.discography = data;
+  });
+
+  $scope.orderProp = 'Title';
+}
+
 function SongDetail($scope, $routeParams, $http) {
   $http.get('/m2/api/songs/' + $routeParams.songId).success(function(data) {
     $scope.song = data[0];
@@ -40,6 +48,12 @@ function MovieDetail($scope, $routeParams, $http) {
 
 function ShowDetail($scope, $routeParams, $http) {
   $http.get('/m2/api/shows/' + $routeParams.showId).success(function(data) {
+    $scope.show = data[0];
+  });
+}
+
+function DiscographyDetail($scope, $routeParams, $http) {
+  $http.get('/m2/api/discography/' + $routeParams.discographyId).success(function(data) {
     $scope.show = data[0];
   });
 }
