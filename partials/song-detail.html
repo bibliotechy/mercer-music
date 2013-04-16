@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+      <!--Body content-->
+<p>ID: {{song.ID}}</p>
+<p>Title : {{Title}}<p>
+<p>Copyright: {{song.Copyright}}</p>
+<p>Lyricist: {{song.Lyricist}}</p>
+<p>Composer: {{song.Composer}}</p>
+<p>Published : {{song.Published}}</p>
+<p>Awards: {{song.Awards}}</p>
+<p>Notes: {{song.Notes}}</p>
+<p>Alternative Titles</p>
+<ul>
+  <li ng-repeat="Alternative in song.AlternateTitles"> 
+    <a>{{Alternative.Title}}</a>
+  </li>
+</ul>
+<p>Citations</p>
+<ul>
+  <li ng-repeat="Citation in song.Citations">
+    <a href="#" title="{{Citation.URL}}">{{Citation.Shortname}}</a>
+  </li>
+</ul>
+<p>Holdings</p>
+<ul>
+  <li ng-repeat="Holding in song.Holdings">
+    {{Holding.name}}
+  </li>
+</ul>
+
+    </div>
+  </div>
+</div>

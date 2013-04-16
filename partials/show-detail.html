@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+
+      <!--Body content-->
+<p>ID: {{show.ID}}</p>
+<p>Title : {{show.Title}}<p>
+<p>Show Date: {{show.ShowDate}}</p>
+<p>Lyricist: {{show.Lyricist}}</p>
+<p>Composer: {{show.Composer}}</p>
+<p>Performance Notes : {{show.PerformanceNotes}}</p>
+<p>Notes: {{show.Notes}}</p>
+<p>Songs</p>
+<ul>
+  <li ng-repeat="Song in show.Songs | orderBy:'Title' "> 
+  <a href="#/songs/{{Song.ID}}">{{Song.Title}}</a>
+  </li>
+</ul>
+<p>Holdings</p>
+<ul>
+  <li ng-repeat="Holding in show.Holdings">
+    {{Holding.Name}}
+  </li>
+</ul>
+
+    </div>
+  </div>
+</div>
