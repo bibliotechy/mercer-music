@@ -3,7 +3,7 @@
 /* Controllers */
 
 function SongList($scope, $http) {
-  $http.get('/m2/api/songs/all').success(function(data) {
+  $http.get('/m2/api/songs').success(function(data) {
     $scope.songs = data;
   });
 
@@ -11,7 +11,7 @@ function SongList($scope, $http) {
 }
 
 function MovieList($scope, $http) {
-  $http.get('/m2/api/movies/all').success(function(data) {
+  $http.get('/m2/api/movies').success(function(data) {
     $scope.movies = data;
   });
 
@@ -19,7 +19,7 @@ function MovieList($scope, $http) {
 }
 
 function ShowList($scope, $http) {
-  $http.get('/m2/api/shows/all').success(function(data) {
+  $http.get('/m2/api/shows').success(function(data) {
     $scope.shows = data;
   });
 
