@@ -15,7 +15,7 @@ class Movie extends Api {
   	        WHERE ID =?";
 	$f3->set('result',$db->exec($sql, $f3->get('PARAMS.movie')));
 	foreach ($f3->get('result') as $key => $value) {
-		$movie[$key] = $value;
+		$movie[] = $value;
 	}
 	return $movie;
   }
@@ -27,7 +27,7 @@ class Movie extends Api {
             WHERE  j.movieID =?";
     $f3->set('result',$db->exec($sql, $f3->get('PARAMS.movie')));
 	foreach ($f3->get('result') as $key => $value) {
-		$movie['Holdings'][] = $value;
+		$movie[0]['Holdings'][] = $value;
 	}
 	return $movie;
   }
@@ -39,7 +39,7 @@ class Movie extends Api {
   	        WHERE j.movieID =?";
 	$f3->set('result',$db->exec($sql, $f3->get('PARAMS.movie')));
 	foreach ($f3->get('result') as $key => $value) {
-		$movie['Songs'][] = $value;
+		$movie[0]['Songs'][] = $value;
 	}
 	return $movie;
   }

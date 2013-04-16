@@ -27,7 +27,7 @@ class Show extends Api {
             WHERE  j.showID =?";
     $f3->set('result',$db->exec($sql, $f3->get('PARAMS.show')));
 	foreach ($f3->get('result') as $key => $value) {
-		$show['Holdings'][] = $value;
+		$show[0]['Holdings'][] = $value;
 	}
 	return $show;
   }
@@ -39,7 +39,7 @@ class Show extends Api {
   	        WHERE j.showID =?";
 	$f3->set('result',$db->exec($sql,  $f3->get('PARAMS.show')));
 	foreach ($f3->get('result') as $key => $value) {
-		$show['Songs'][] = $value;
+		$show[0]['Songs'][] = $value;
 	}
 	return $show;
   }

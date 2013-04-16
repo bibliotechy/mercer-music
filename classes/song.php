@@ -14,7 +14,7 @@ class Song extends Api{
     $sql = "SELECT * FROM ms WHERE ID =" . $f3->get('PARAMS.song') . " AND Suppress <> 1";
     $f3->set('result',$db->exec($sql));
     foreach ($f3->get('result')  as $key => $value) {
-      $song[$key] = $value ;
+      $song[] = $value ;
     }
     return $song;
    }
@@ -24,7 +24,7 @@ class Song extends Api{
     $f3->set('result',$db->exec($sql));
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
-        $song['0']['AlternateTitles'][$key] = $value;
+        $song[0]['AlternateTitles'][$key] = $value;
       }
     }
     return $song;
@@ -38,7 +38,7 @@ class Song extends Api{
     $f3->set('result',$db->exec($sql));
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
-        $song['0']['Citations'][$key] = $value;
+        $song[0]['Citations'][$key] = $value;
       }
     }
     return $song;
@@ -52,7 +52,7 @@ class Song extends Api{
     $f3->set('result',$db->exec($sql));
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
-        $song['0']['Holdings'][$key] = $value;
+        $song[0]['Holdings'][$key] = $value;
       }
     }
     return $song;
