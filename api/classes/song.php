@@ -58,12 +58,12 @@ class Song extends Api{
     return $song;
   }
  
- public static function getSongTitle($f3, $song, $db) {
+  public static function getSongTitle($f3, $song, $db) {
  	$sql = "SELECT Title FROM  ms
  	        WHERE ID = " . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
     foreach ($f3->get('result')  as $key => $value) {
-      $song['Title'] = $value['Title'] ;
+      $song['Title'] = $value['Title'];
 	}
 	return $song;
  }

@@ -1,10 +1,10 @@
 <?php
 
 // load the base f3 library
-$f3 =  require('../lib/base.php');
+$f3 =  require('lib/base.php');
 
 //lazy load the classes in the classes directory as needed
-$f3->set('AUTOLOAD', 'classes/');
+$f3->set('AUTOLOAD', 'pages/');
 
 // set the routes and functions to call  
 $f3->route('/GET /songs/search/@query', 'SongSearch->get');

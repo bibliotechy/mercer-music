@@ -4,15 +4,13 @@ class DiscographySong extends Api{
   
   public static function buildResultArray($f3, $song, $db) {
     $song = DiscographySong::getRecordingsInfo($f3, $song, $db);
-	foreach ($song['recordings'] as $recording){
-      	if ($recording['songType'] != '1') {
-          $song = DiscographySong::getSongTitle($f3, $song, $db);
-		}
-        else {
-          $song = Song::getSongTitle($f3, $song, $db);
-        }
-		break;
-	  }
+    $recording = reset($song['recordings']);
+    if ($recording["songType"] != "1") {
+      $song = DiscographySong::getSongTitle($f3, $song, $db);
+	}
+    else {
+      $song = Song::getSongTitle($f3, $song, $db);
+    }
 	$song = DiscographySong::getHoldingsInfo($f3, $song, $db);
     return $song;
   }
