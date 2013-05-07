@@ -7,6 +7,8 @@ class Song extends Api{
     $song = Song::getAlternateTitles($f3, $song, $db);
     $song = Song::getCitationsInfo($f3, $song, $db);
     $song = Song::getHoldingsInfo($f3, $song, $db);
+	$song = Song::getMovies($f3, $song, $db);
+	$song = Song::getShows($f3, $song, $db);
     return $song; 
   }
 
@@ -26,6 +28,9 @@ class Song extends Api{
       foreach ($f3->get('result')  as $key => $value) {
         $song[0]['AlternateTitles'][$key] = $value;
       }
+	}
+	else {
+		$song[0]['AlternateTitles'] = array();
     }
     return $song;
   }
@@ -41,6 +46,9 @@ class Song extends Api{
         $song[0]['Citations'][$key] = $value;
       }
     }
+	else {
+		$song[0]['Citations'] = array();
+	}
     return $song;
   }
 
@@ -55,8 +63,44 @@ class Song extends Api{
         $song[0]['Holdings'][$key] = $value;
       }
     }
+	else {
+	  $song[0]['Holdings'] = array();
+	}
     return $song;
   }
+  
+  public static function getMovies($f3, $song, $db) {
+  	$sql = "SELECT m.Title, m.ID 
+  	        FROM ms_j_songmovie j JOIN ms_movies m on m.ID = j.movieID
+  	        WHERE j.songID = " . $f3->get('PARAMS.song');
+  	$f3->set('result',$db->exec($sql));
+  	if ($f3->get('result')) {
+      foreach ($f3->get('result')  as $key => $value) {
+        $song[0]['Movies'][$key] = $value;
+      }
+    }
+	else {
+		$song[0]['Movies'] =  array();
+	}
+    return $song;
+  }
+  
+ public static function getShows($f3, $song, $db) {
+  	$sql = "SELECT s.Title, s.ID 
+  	        FROM ms_j_songshow j JOIN ms_shows s on s.ID = j.showID
+  	        WHERE j.songID = " . $f3->get('PARAMS.song');
+  	$f3->set('result',$db->exec($sql));
+  	if ($f3->get('result')) {
+      foreach ($f3->get('result')  as $key => $value) {
+        $song[0]['Shows'][$key] = $value;
+      }
+    }
+	else {
+		$song[0]['Shows'] =  array();
+	}
+    return $song;
+  }
+ 
  
   public static function getSongTitle($f3, $song, $db) {
  	$sql = "SELECT Title FROM  ms
