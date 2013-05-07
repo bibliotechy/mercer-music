@@ -1,0 +1,35 @@
+<div class="offset1 span11">
+  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
+  <dl class="dl-horizontal">
+  	<dt>Lyricist</dt>
+  	<dd>{{@data->Lyricist}}</dd>
+  	<dt>Composer</dt>
+  	<dd>{{@data->Composer}}</dd>
+  	<dt>Date</dt>
+  	<dd>{{@data->MovieDate}}</dd>
+  	<dt>Studio</dt>
+  	<dd>{{@data->Studio}}</dd>
+  	<check if="{{@data->Holdings}}">
+  		<dt>GSU has</dt>
+  		<dd>
+  			<ul class="unstyled">
+  				<repeat group="{{@data->Holdings}}" value="{{@holding}}">
+  					<li>{{@holding->Name}}</li>
+  				</repeat>
+  				
+  			</ul>
+  		</dd>
+  	</check>
+  	<check if="{{@data->Songs}}">
+  		<dt>Songs</dt>
+  		<dd>
+  			<ul class="unstyled">
+  				<repeat group="{{@data->Songs}}" value="{{@song}}">
+  					<li><a href="{{@root}}/songs/{{@song->ID}}">{{@song->Title}}</a></li>
+  				</repeat>
+  				
+  			</ul>
+  		</dd>
+  	</check>	
+  </dl>
+</div>

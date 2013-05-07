@@ -5,25 +5,20 @@ $f3 =  require('lib/base.php');
 
 //lazy load the classes in the classes directory as needed
 $f3->set('AUTOLOAD', 'pages/');
+$f3->set('root', '/m2');
 
 // set the routes and functions to call  
-$f3->route('/GET /songs/search/@query', 'SongSearch->get');
-$f3->route('/GET /songs/browse/@letter', 'SongBrowse->get');
-$f3->route('/GET /songs', 'BrowseAllSongs->get');
-$f3->map('/songs/@song', 'Song');
+$f3->route('/GET /songs', 
+  function($f3) {
+    $f3->set('header','templates/songHeader.htm');
+    $f3->set('content', '');
+    $template = new Template();
+    echo $template->render('templates/base.htm');
+  });
 
-$f3->route('/GET /discography/search/@query', 'DiscographySearch->get');
-$f3->route('/GET /discography/browse/@letter', 'DiscographyBrowse->get');
-$f3->route('/GET /discography', 'BrowseAllDiscography->get');
-$f3->map('/discography/@song', 'DiscographySong');
+$f3->route('/GET /songs/@song', 'Song->renderPage');
 
-$f3->route('/GET /movies', 'BrowseAllMovies->get');
-$f3->map('/movies/@movie', 'Movie');
-
-$f3->route('/GET /shows', 'BrowseAllShows->get');
-$f3->map('/shows/@show', 'Show');
-
-$f3->map('/test/@song', 'MyTest');
+$f3->route('/GET /movies/@movie', 'Movie->renderPage');
 
 $f3->run();
 

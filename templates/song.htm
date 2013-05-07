@@ -1,0 +1,65 @@
+<div class="offset1 span11">
+  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
+  <dl class="dl-horizontal">
+  	<check if="{{@data->AlternateTitles}}">
+  	  <dt>Alternate Titles</dt>
+  	  <dd>
+  		<ul class="unstyled ">
+  		  <repeat group="{{@data->AlternateTitles}}" value="{{@title}}">
+  		    <li>{{@title->Title}}</li>
+  		  </repeat>
+  		</ul>
+  	  </dd>
+  	</check>
+    <dt>Lyricist</dt>
+    <dd>{{@data->Lyricist}}</dd>
+    <dt>Composer</dt>
+    <dd>{{@data->Composer}}</dd>
+    <check if="{{@data->Movies}}">
+      <dt>Movies</dt>
+      <dd>
+      	<ul class="unstyled">
+      	  <repeat group="{{@data->Movies}}" value="@movie">
+      	    <li><a href="{{@root}}/movies/{{@movie->ID}}">{{@movie->Title}}</a></li>
+      	  </repeat>
+      	</ul>
+      </dd>
+    </check>
+    <check if="{{@data->Shows}}">
+      <dt>Shows</dt>
+      <dd>
+      	<ul class="unstyled">
+      	  <repeat group="{{@data->Shows}}" value="@show">
+      	    <li><a href="{{@root}}/shows/{{@show->ID}}">{{@movie->Title}}</a></li>
+      	  </repeat>
+      	</ul>
+      </dd>
+    </check>
+    <dt>Date</dt>
+    <dd>{{@data->Copyright}}</dd>
+    <check if="{{@data->Citations}}">
+    	<dt>Citations</dt>
+    	<dd>
+    		<ul class="unstyled">
+    		<repeat group="{{@data->Citations}}" value="{{@citation}}">
+    			<li>{{@citation->Shortname}}</li>
+    		</repeat>
+    		</ul>
+    	</dd>
+    </check>
+    <check if="{{@data->Holdings}}">
+    	<dt>GSU has</dt>
+    	<dd>
+    		<ul class="unstyled">
+    			<repeat group="{{@data->Holdings}}" value="{{@holding}}">
+    				<li>{{@holding->name}}</li>
+    			</repeat>
+    		</ul>
+    	</dd>
+    </check>
+    <check if="{{@data->Notes}}">
+    	<dt>Notes</dt>
+    	<dd>{{@data->Notes}}</dd>
+    </check>
+  </dl>
+</div>
