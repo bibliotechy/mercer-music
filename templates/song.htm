@@ -20,7 +20,7 @@
       <dd>
       	<ul class="unstyled">
       	  <repeat group="{{@data->Movies}}" value="@movie">
-      	    <li><a href="{{@root}}/movies/{{@movie->ID}}">{{@movie->Title}}</a></li>
+      	    <li><a href="{{@root}}/movie/{{@movie->ID}}">{{@movie->Title}}</a></li>
       	  </repeat>
       	</ul>
       </dd>
@@ -30,7 +30,7 @@
       <dd>
       	<ul class="unstyled">
       	  <repeat group="{{@data->Shows}}" value="@show">
-      	    <li><a href="{{@root}}/shows/{{@show->ID}}">{{@movie->Title}}</a></li>
+      	    <li><a href="{{@root}}/show/{{@show->ID}}">{{@show->Title}}</a></li>
       	  </repeat>
       	</ul>
       </dd>

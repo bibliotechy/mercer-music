@@ -26,8 +26,13 @@ class Movie extends Api {
   	        JOIN ms_j_movieholding j on j.holdingID = h.ID 
             WHERE  j.movieID =?";
     $f3->set('result',$db->exec($sql, $f3->get('PARAMS.movie')));
-	foreach ($f3->get('result') as $key => $value) {
-		$movie[0]['Holdings'][] = $value;
+	if ($f3->get('result')){
+		foreach ($f3->get('result') as $key => $value) {
+			$movie[0]['Holdings'][] = $value;
+		}
+	}
+	else {
+		$movie[0]['Holdings'] = array();
 	}
 	return $movie;
   }
@@ -38,8 +43,13 @@ class Movie extends Api {
   	        JOIN ms_j_songmovie j on s.ID = j.songID
   	        WHERE j.movieID =?";
 	$f3->set('result',$db->exec($sql, $f3->get('PARAMS.movie')));
-	foreach ($f3->get('result') as $key => $value) {
-		$movie[0]['Songs'][] = $value;
+	if ($f3->get('result')) {
+		foreach ($f3->get('result') as $key => $value) {
+			$movie[0]['Songs'][] = $value;
+		}
+	}
+	else {
+		$movie[0]['Songs'] = array();
 	}
 	return $movie;
   }
