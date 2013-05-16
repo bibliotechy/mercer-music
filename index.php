@@ -19,6 +19,8 @@ $f3->route('/GET /songs',
     echo $template->render('templates/base.htm');
   });
 
+
+//Routing for Single song /  movie / show
 $f3->route('/GET /@type/@query', 'Single->renderPage');
 
 $f3->run();

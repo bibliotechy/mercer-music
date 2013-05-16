@@ -1,0 +1,13 @@
+<div class="offset1 span11">
+  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
+  <dl class="dl-horizontal">
+  	
+	<repeat group="{{@data->recordings}}" value="{{@recording}}">
+		<div class="thumbnail">
+		<dt>Performers</dt>
+		<dd>{{@recording->Performers}}</dd>
+		</div>
+	</repeat>
+  </dl>
+ </div>
+
