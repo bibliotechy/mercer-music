@@ -2,41 +2,1092 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+	<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="/m2/css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
-        <link rel="stylesheet" href="/m2/css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="/m2/css/main.css">
+		<link rel="stylesheet" href="/m2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/m2/css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" href="/m2/css/main.css">
 
-        <script src="/m2/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <include href="{{ @header }}" />
-            <include href="{{ @content }}" />
-            <footer>
-                <p>&copy; Georgia State University Library 2012</p>
-            </footer>
+		<script src="/m2/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-        </div> <!-- /container -->
+		<title>Mercer Discography - Special Collections - Georgia State University Library</title>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<link rel="icon" href="http://library.gsu.edu/gsufavicon.ico" type="image/x-icon" />
 
-        <script src="/m2/js/vendor/bootstrap.min.js"></script>
+		<link rel="shortcut icon" href="http://library.gsu.edu/gsufavicon.ico" type="image/x-icon" />
 
-        <script src="/m2/js/main.js"></script>
-    </body>
+		<style type="text/css" media="screen, projection">
+			/* Caution! Ensure accessibility in print and other media types... */
+
+			@media projection, screen {/* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+
+				.ui-tabs-hide {
+
+					display: none;
+					visibility: hidden;
+				}
+
+			}
+
+			.ui-tabs-hide {
+
+				display: none;
+				visibility: hidden;
+			}
+
+			.ui-tabs .ui-tabs-nav {
+				list-style: none;
+				padding: .2em .2em 0;
+			}
+
+			.ui-tabs .ui-tabs-nav li {
+				position: relative;
+				float: left;
+				border-bottom-width: 0 !important;
+				margin: 0 .2em -1px 0;
+				padding: 0;
+			}
+
+			.ui-tabs .ui-tabs-hide {
+				display: none !important;
+			}
+
+			#tabs ul#menu  li.ui-tabs-selected {
+				background-image: url(http://library.gsu.edu/tab_selected_left_bg.gif);
+			}
+
+			#tabs ul#menu  li.ui-tabs-selected  a {
+				background-image: url(http://library.gsu.edu/tab_selected_right_bg.gif);
+				color: #666666;
+			}
+
+		</style>
+
+		<!-- CSS Calls -->
+
+		<link href="http://library.gsu.edu/maincss.css" rel="stylesheet" type="text/css" />
+
+		<!--[if IE]>
+
+		<link href="http://library.gsu.edu/ieonly.css" rel="stylesheet" type="text/css" />
+
+		<![endif]-->
+
+		<style type="text/css" media="print">
+			.grid_13full .roundimage, #tabs, #tools, #mediaContentContainer1, .noprint {
+				display: none;
+			}
+
+			.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16 {
+				clear: both;
+			}
+
+		</style>
+
+		<!-- <link rel="stylesheet" href="sheet_music.css" title="librarytheme"> -->
+
+		<link rel="stylesheet" href="Pagination.css">
+
+		<style type="text/css">
+			html {
+				background-image: none;
+			}
+
+			#bodycontent table {
+
+				width: 100%;
+				border-width: 0px;
+				border-style: solid;
+				border-color: #cccccc;
+				border-collapse: collapse;
+				font-size: 1em;
+				margin: 0;
+			}
+
+			#bodycontent td {
+
+				border-width: 1px;
+				border-style: solid;
+				border-color: #cccccc;
+			}
+
+		</style>
+
+		<!-- CSS Calls -->
+
+		<!--[if lt IE 7]>
+
+		<script type="text/javascript" src="http://library.gsu.edu/6.htm"></script>
+
+		<![endif]-->
+
+		<script type="text/javascript">
+			<!--
+
+			function MM_jumpMenu(targ, selObj, restore) {//v3.0
+
+				eval(targ + ".location='" + selObj.options[selObj.selectedIndex].value + "'");
+
+				if (restore)
+					selObj.selectedIndex = 0;
+
+			}
+
+			//-->
+
+		</script>
+
+		<script type="text/javascript">
+			//<![CDATA[ <!--
+
+			var key_press = false;
+
+			function jump_menu(target, sel_obj) {
+
+				if (!key_press) {
+
+					eval(target + ".location='" + sel_obj.options[sel_obj.selectedIndex].value + "'");
+
+				}
+
+			}
+
+			function key(evt, sel_obj) {
+
+				var key_code = document.layers ? evt.which : evt.keyCode;
+
+				if (key_code == 13) {
+
+					sel_obj.form.submit();
+
+				} else {
+
+					key_press = true;
+
+					return false;
+
+				}
+
+			}
+
+			//--> //]]>
+
+		</script>
+
+		
+
+		<script  type="text/javascript" src=""></script>
+
+		<script type="text/javascript">
+			function redir(url) {//v3.0
+
+				if (url.length > 5)
+
+					window.location = url;
+
+			}
+
+			var fgreg = "na";
+
+		</script>
+
+	</head>
+
+	<body >
+
+		<div id="result">
+
+		</div>
+
+		<div id="skipper">
+			<a href="#content">Skip to Content</a> | <a href="http://text.usg.edu:8080/tt/referrer" id="jmpside">Text-only</a>
+		</div>
+
+		<!-- College Header -->
+
+		<div class="container_16 header noprint" id="college">
+
+			<div class="grid_7" id="logo">
+				<a href="http://www.gsu.edu/" id="gsu"><img src="http://library.gsu.edu/spacer.gif" alt="Georgia State University" height="84" width="112" /></a><a href="http://library.gsu.edu/index.php" id="collegelogo"><img src="http://library.gsu.edu/spacer.gif" alt="University Library" height="84" width="230" /></a>
+			</div>
+
+			<div class="grid_9" id="tools" style="padding:0px; margin:0px; width:540px;">
+
+				<div>
+
+					<ul class="toollinks">
+
+						<li>
+							<a href="http://www.gsu.edu/">GSU</a>
+						</li>
+						<li>
+							<a href="http://www.gsu.edu/web_mail.html">Email</a>
+						</li>
+						<li>
+							<a href="http://www.gsu.edu/gastate_libraries.html">Library</a>
+						</li>
+						<li>
+							<a href="http://gsu.view.usg.edu/">Ulearn</a>
+						</li>
+						<li>
+							<a href="https://paws.gsu.edu/">PAWS</a>
+						</li>
+						<li>
+							<a href="https://www.gosolar.gsu.edu/webforstudent.htm">GOSOLAR</a>
+						</li>
+						<li>
+							<a href="http://www.gsu.edu/gastate_admissions.html">Admissions</a>
+						</li>
+						<li>
+							<a href="http://www.gsu.edu/campusvisits/">Campus Visits</a>
+						</li>
+						<li>
+							<a href="http://calendar.gsu.edu/calendar/">Calendar</a>
+						</li>
+						<li>
+							<a href="http://www.gsu.edu/a_to_z_offices_services.html">A-Z</a>
+						</li>
+
+					</ul>
+
+				</div>
+
+				<div class="tagline">
+
+					<form action="http://lucia.gsu.edu/search" method="get" name="searchform" class="searchbar" id="searchform">
+
+						<input name="searchtarget" value="gsu" type="hidden" />
+
+						<input name="client" value="GeorgiaState" type="hidden" />
+
+						<input name="proxystylesheet" value="GeorgiaState" type="hidden" />
+
+						<input name="output" value="xml_no_dtd" type="hidden" />
+
+						<!-- remove form all from. eguide  and use this q -->
+
+						<input type=hidden value="*" name="givennames" />
+
+						<input type=hidden value="*" name="sns" />
+
+						<input type=hidden value="All" name="search" id="a1212" />
+
+						<input type=hidden value="" name="sn" id="sn" />
+
+						<input type=hidden value="" name="givenname" id="givenname" />
+
+						<label for="q"><strong>Search</strong></label>
+
+						<label>
+							<input name="site" type="radio" value="GeorgiaState" />
+							<strong>Georgia State</strong></label>
+
+						<label>
+							<input name="site" type="radio" value="University_Library" checked="checked" id="University_Library"/>
+							<strong>University Library</strong></label>
+
+						<label>
+							<input name="site" type="radio" value="GeorgiaState"  id="directory"  />
+							<strong>Directory</strong> </label>
+
+						<br />
+
+						<input type="text" value="" name="q"  size="40"  id="q" />
+						<input name="Submit" value="Submit" src="http://library.gsu.edu/spacer.gif" alt="Go" type="image" class="gobutton" />
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="container_16">
+
+			<div class="grid_16">
+
+				<!-- <link href="http://www.gsu.edu/emanage/emn.css" rel="stylesheet" type="text/css" /> -->
+
+				<div id="emn1234567"></div>
+
+				<script src="http://www.gsu.edu/emanage/emn.js"></script>
+
+			</div>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<!-- Global Navigation -->
+
+		<div id="tabs" class="container_16">
+
+			<script type="text/javascript" language="javascript">
+				document.write("<ul id='menu'>");
+
+				document.write("<li style='background-image: none;'><a href='#home' style='background-image: none;' onclick='parent.location=\"http://library.gsu.edu/index.php\"' ><span style='color: #FFF;'>Home</span></a></li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#about' onclick='return redir(\"0\");' style='background-repeat: no-repeat; background-position: right top;'><span>About<\/span><\/a><\/li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#services' onclick='return redir(\"0\");' style='background-repeat: no-repeat; background-position: right top;'><span>Services<\/span><\/a><\/li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#howdoi' onclick='return redir(\"0\");' style='background-repeat: no-repeat; background-position: right top;'><span>How Do I...?<\/span><\/a><\/li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#search' onclick='return redir(\"0\");' style='background-repeat: no-repeat; background-position: right top;'><span>Search &amp; Find<\/span><\/a><\/li>");
+
+				document.write("<li id='fgreg' class='ui-corner-top ui-state-active active' style='background-repeat: no-repeat; background-position: left top;'><a href='#collections'  onclick='return fgreg=\"collections\";' style='background-repeat: no-repeat; background-position: right top;'><span>Collections &amp; Archives<\/span><\/a><\/li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#information' onclick='return redir(\"0\");' style='background-repeat: no-repeat; background-position: right top;'><span>Information For You<\/span><\/a><\/li>");
+
+				document.write("<li style='background-repeat: no-repeat; background-position: left top;'><a href='#' onclick='return redir(\"http://gilfind.gsu.edu/vufind/MyResearch/Home\");' style='background-repeat: no-repeat; background-position: right top;'><span>My Library Account<\/span><\/a><\/li>");
+
+				document.write("</ul>");
+
+			</script>
+
+			<noscript>
+
+				<ul id="menu">
+
+					<li style="background-image: none;">
+						<a href="http://library.gsu.edu/index.php" style="background-image: none;"><span style="color: #FFF;">Home</span></a>
+					</li>
+
+					<li style="background-repeat: no-repeat; background-position: left top;">
+						<a href="" style="background-repeat: no-repeat; background-position: right top;"><span>About</span></a>
+					</li>
+
+					<li style="background-repeat: no-repeat; background-position: left top;">
+						<a href="" style="background-repeat: no-repeat; background-position: right top;"><span>Services</span></a>
+					</li>
+
+					<li style="background-repeat: no-repeat; background-position: left top;">
+						<a href="" style="background-repeat: no-repeat; background-position: right top;"><span>How Do I...?</span></a>
+					</li>
+
+					<li style="background-repeat: no-repeat; background-position: left top;">
+						<a href="" style="background-repeat: no-repeat; background-position: right top;"><span>Search &amp; Find</span></a>
+					</li>
+
+					<li style="background-repeat: no-repeat; background-position: left top;">
+						<a href="" " style="background-repeat: no-repeat; background-position: right top;"><span>Collections &amp; Archives</span></a></li>
+
+						<li style="background-repeat: no-repeat; background-position: left top;"><a href="" style="background-repeat: no-repeat; background-position: right top;"><span>Information For You</span></a></li>
+
+						<li style="background-repeat: no-repeat; background-position: left top;"><a href="" style="background-repeat: no-repeat; background-position: right top;"><span>My Library Account</span></a></li>
+
+						</ul>
+
+						</noscript>
+
+						<div id="home" class="navdropdown container_16" style="display:none"></div>
+
+						<script type="text/javascript" language="javascript">
+
+						document.write ("<div id='about' class='navdropdown container_16 ui-tabs-hide'>");
+
+						document.write ("<div class='topbg'>");
+
+						document.write ("<div class='grid_16'>");
+
+						document.write ("<ul>");
+
+						document.write ("<li style='display:none;'>&nbsp;<\/li>");
+
+						document.write ("<li class='column1 '><a href='http://library.gsu.edu/223.html'>Welcome to the Library<\/a><\/li>");
+
+						document.write ("<li class='column1 '><a href='http://library.gsu.edu/directory.php'>Directory<\/a><\/li>");
+
+						document.write ("<li class='column1 '><a href='http://library.gsu.edu/528.html'>Calendar & Hours of Operation<\/a><\/li>");
+
+						document.write ("<li class='column2 reset'><a href='http://library.gsu.edu/70.html'>Employment<\/a><\/li>");
+
+						document.write ("<li class='column2 '><a href='http://library.gsu.edu/94.html'>Floor Maps<\/a><\/li>");
+
+						document.write ("<li class='column2 '><a href='http://library.gsu.edu/96.html'>Travel Directions<\/a><\/li>");
+
+						document.write ("<li class='column3 reset'><a href='http://library.gsu.edu/98.html'>Policies<\/a><\/li>");
+
+						document.write ("<li class='column3 '><a href='http://library.gsu.edu/100.html'>Giving to the Library<\/a><\/li>");
+
+						document.write ("<li class='column3 '><a href='http://library.gsu.edu/404.html'>Library Blog<\/a><\/li>");
+
+						document.write ("<li class='column4 reset'><a href='http://library.gsu.edu/feedback.php'>Feedback<\/a><\/li>");
+
+						document.write ("<\/ul>");
+
+						document.write ("<\/div>");
+
+						document.write ("<\/div>");
+
+						document.write ("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='services' class='navdropdown container_16 ui-tabs-hide'>");
+
+							document.write("<div class='topbg'>");
+
+							document.write("<div class='grid_16'>");
+
+							document.write("<ul>");
+
+							document.write("<li style='display:none;'>&nbsp;<\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/78.html'>Interlibrary Loan / GIL Express<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/72.html'>Computing<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/74.html'>Study Rooms<\/a><\/li>");
+
+							document.write("<li class='column2 reset'><a href='http://library.gsu.edu/503.html'>Borrow & Renew Materials<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/86.html'>Subject Librarians<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/406.html'>Request Course Reserves<\/a><\/li>");
+
+							document.write("<li class='column3 reset'><a href='http://library.gsu.edu/class-request.php'>Request a Class<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/90.html'>Widgets, Apps, & Software<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/consultation.php'>Request a Consultation<\/a><\/li>");
+
+							document.write("<li class='column4 reset'><a href='http://library.gsu.edu/560.html'>Tutors<\/a><\/li>");
+
+							document.write("<\/ul>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='howdoi' class='navdropdown container_16 ui-tabs-hide'>");
+
+							document.write("<div class='topbg'>");
+
+							document.write("<div class='grid_16'>");
+
+							document.write("<ul>");
+
+							document.write("<li style='display:none;'>&nbsp;<\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/104.html'>Find Books<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/106.html'>Find Articles<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/108.html'>Cite a Source<\/a><\/li>");
+
+							document.write("<li class='column2 reset'><a href='http://library.gsu.edu/110.html'>Ask a Librarian<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/112.html'>Find a Subject Librarian<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/268.html'>Research a Subject (Research Guides)<\/a><\/li>");
+
+							document.write("<li class='column3 reset'><a href='http://library.gsu.edu/116.html'>Connect from Off Campus<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/118.html'>Find Media<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/1164.html'>Watch Video Tutorials<\/a><\/li>");
+
+							document.write("<\/ul>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='search' class='navdropdown container_16 ui-tabs-hide'>");
+
+							document.write("<div class='topbg'>");
+
+							document.write("<div class='grid_16'>");
+
+							document.write("<ul>");
+
+							document.write("<li style='display:none;'>&nbsp;<\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/659.html'>Library Catalog - GIL Find<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/120.html'>Library Catalog - GIL Classic<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/121.html'>Other Library Catalogs<\/a><\/li>");
+
+							document.write("<li class='column2 reset'><a href='http://library.gsu.edu/558.html'>Article Databases<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/660.html'>GALILEO<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/408.html'>Research Guides<\/a><\/li>");
+
+							document.write("<li class='column3 reset'><a href='http://library.gsu.edu/409.html'>Course Reserves<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/410.html'>GSU's Electronic Theses &amp; Dissertations<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/412.html'>E-Journal Locator<\/a><\/li>");
+
+							document.write("<\/ul>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='collections' class='navdropdown container_16 ui-tabs-hide' style='display: none;'><\/div>");
+
+						</script>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='information' class='navdropdown container_16 ui-tabs-hide'>");
+
+							document.write("<div class='topbg'>");
+
+							document.write("<div class='grid_16'>");
+
+							document.write("<ul>");
+
+							document.write("<li style='display:none;'>&nbsp;<\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/1068.html'>New Students<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/234.html'>Undergraduate Students<\/a><\/li>");
+
+							document.write("<li class='column1 '><a href='http://library.gsu.edu/159.html'>Graduate Students<\/a><\/li>");
+
+							document.write("<li class='column2 reset'><a href='http://library.gsu.edu/157.html'>Faculty<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/1109.html'>Staff<\/a><\/li>");
+
+							document.write("<li class='column2 '><a href='http://library.gsu.edu/163.html'>Alumni & Visitors<\/a><\/li>");
+
+							document.write("<li class='column3 reset'><a href='http://library.gsu.edu/165.html'>Distance Learners<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/548.html'>Patrons with Disabilities<\/a><\/li>");
+
+							document.write("<li class='column3 '><a href='http://library.gsu.edu/265.html'>Library Employees<\/a><\/li>");
+
+							document.write("<\/ul>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						<script type="text/javascript" language="javascript">
+							document.write("<div id='' class='navdropdown container_16 ui-tabs-hide'>");
+
+							document.write("<div class='topbg'>");
+
+							document.write("<div class='grid_16'>");
+
+							document.write("<ul>");
+
+							document.write("<li style='display:none;'>&nbsp;<\/li>");
+
+							document.write("<\/ul>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+							document.write("<\/div>");
+
+						</script>
+
+						<noscript></noscript>
+
+						</div>
+
+						<div class="clear"></div>
+
+						<div id="wrapper">
+
+						<!-- Page Layout Options -->
+
+						<div id="page" class="container_16" style="display:inline-block">
+
+						<!-- Left Column -->
+
+						<div id="leftrail" class="grid_3">
+
+						<div id="leftnav" class="noprint">
+
+							<!-- Left Navigation For -->
+
+							<ul class="tier1">
+
+								<li>
+
+									<div>
+										<a href="http://library.gsu.edu/594.html">Digital Collections</a>
+									</div>
+
+								</li>
+
+								<li class="lnavselected">
+
+									<div>
+										<a href="http://library.gsu.edu/417.html">Special Collections & Archives</a>
+									</div>
+
+									<ul class="tier2">
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/147.html">Southern Labor Archives</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1245.html">Archives of the International Association of Machinists and Aerospace Workers</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1100.html">Donna Novak Coles Georgia Women's Movement Archives</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1102.html">Lucy Hargrett Draper U.S. Equal Rights Amendment (1921-1982) Research Collection</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1107.html">Archives for Research on Women and Gender</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/145.html">Popular Music & Culture Collection</a>
+											</div>
+
+										</li>
+
+										<li class="lnavselected last">
+
+											<div>
+												<a href="http://library.gsu.edu/1247.html">Johnny Mercer Collection</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/155.html">Rare Book Collection</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/151.html">Photographic Collections</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1249.html">Atlanta Journal-Constitution Photographic Archive</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/246.html">Georgia Government Documentation Project</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/1251.html">Social Change Collection</a>
+											</div>
+
+										</li>
+
+										<li>
+
+											<div>
+												<a href="http://library.gsu.edu/153.html">Georgia State University Archives</a>
+											</div>
+
+										</li>
+
+									</ul>
+
+								</li>
+
+								<li>
+
+									<div>
+										<a href="http://library.gsu.edu/400.html">Digital Archive @ Georgia State University</a>
+									</div>
+
+								</li>
+
+							</ul>
+
+						</div>
+
+						<!-- Information For -->
+
+						&nbsp;
+
+		</div>
+
+		<!-- Start Content Column -->
+
+		<div class="grid_13full">
+
+			<div class="grid_13full">
+
+				<div class="grid_9" id="pagecontent">
+
+					<!-- PAGE CONTENT BEGINS -->
+
+					<div class="breadcrumb">
+
+						<a href="http://library.gsu.edu/index.php">Georgia State University Library</a>&nbsp;&raquo;&nbsp;
+
+						<a href="http://library.gsu.edu/417.html">Special Collections & Archives</a>&nbsp;&raquo;&nbsp;
+
+						<strong>Popular Music & Culture Collection</strong>
+
+					</div>
+
+					<a id="content"></a>
+
+					<div id="content_wrapper" style="float:left;">
+
+						<div id="bodycontent">
+
+							<div class="container">
+								<include href="{{ @header }}" />
+								<include href="{{ @content }}" />
+								<footer>
+									<p>
+										&copy; Georgia State University Library 2012
+									</p>
+								</footer>
+
+							</div>
+							<!-- /container -->
+
+							<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+							<script>
+								window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>');
+							</script>
+					<script src="/m2/js/jquery-ui.min.js" type="text/javascript"></script>
+
+		<script src="http://library.gsu.edu/ui.tabs.js" type="text/javascript"></script>
+        <script>
+       			$(function() {
+				$('#tabs').tabs({
+					collapsible : true
+				});
+				$('#tabs').bind('tabsselect', function(event, ui) {
+					if (slcted == ui.panel.id || ui.panel.id == fgreg) {
+						if ($('#fgreg').hasClass("active") && ui.panel.id != fgreg) {
+							$('#fgreg').removeClass("active");
+						} else {
+							$('#fgreg').addClass("active");
+						}
+					} else {
+						$('#fgreg').removeClass("active");
+					}
+					slcted = ui.panel.id;
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('div.hide-reveal:eq(0) > div').hide();
+				$('div.hide-reveal:eq(0) > p ').click(function() {
+					$(this).next().slideToggle('fast', function() {
+						$(this).prev().toggleClass("open");
+					});
+				});
+				$("#searchform").submit(function() {
+					if ($("#directory").attr('checked') == true) {
+						$("#searchform").attr("action", "http://campusdirectory.gsu.edu/eguide.cfm");
+						var searchterm = $("input#q").val()
+						$('#sn').val(searchterm);
+						if (searchterm.split(' ')[1]) {
+							$('#sn').val(searchterm.split(' ')[1]);
+							$('#givenname').val(searchterm.split(' ')[0]);
+						}
+					}
+					if ($("#Law").attr('checked') == true) {
+						$("#searchform").attr("action", "http://law.gsu.edu/search/index.php");
+					}
+					//return false;
+				});
+				// return false;
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function() {
+				$("table.zebra tr:nth-child(even)").addClass("striped");
+			});							
+							</script>
+
+							<script src="/m2/js/vendor/bootstrap.min.js"></script>
+
+							<script src="/m2/js/main.js"></script>
+						</div>
+					</div>
+				</div>
+
+				<div class="grid_4" id="rightrail" style="float:left;">
+
+					<script type="text/javascript">
+						function toggle(obj) {
+
+							var el = document.getElementById(obj);
+
+							el.style.display = (el.style.display != 'none' ? 'none' : '' );
+
+						}
+
+					</script>
+
+					<div class="link_list module bottomup" style="padding-bottom: 0px; margin-bottom:10px;">
+
+						<!--     <h3></h3>-->
+
+						<h3 class="moduleheader"><a href="javascript: void(0)" onclick="toggle('infofor');" style="cursor:hand;">Using the Collections</a></h3>
+
+						<div class="modcontent" id="infofor" style="display:nonee;">
+
+							<ul>
+
+								<li>
+									<a href="http://library.gsu.edu/1253.html">Hours and Location</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1255.html">Using Archival Collections</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1257.html">Duplication Services</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/SpColl_Duplication_Request_Form.pdf" target="_blank">Duplication Request Form (PDF)</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1259.html">Permissions &amp; Copyright</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1261.html">Citing Archival Materials</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1263.html">Schedule a Class</a>
+								</li>
+								<li>
+									<a href="http://research.library.gsu.edu/cat.php?cid=43699">Research Guides</a>
+								</li>
+								<li>
+									<a href="http://www.facebook.com/pages/Special-Collections-and-Archives-Georgia-State-University-Library/152736054786760">News &amp; Events</a>
+								</li>
+								<li>
+									<a href="http://library.gsu.edu/1265.html">Donating to the Collections</a>
+								</li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+					<div class="promobox color1">
+
+						<div class="promoheader">
+							<h3><span class="bg"><!--<span>-->Contact Us<!--</span>--></span></h3>
+						</div>
+
+						<div class="content">
+
+							<div>
+
+								<p>
+									Phone: (404) 413-2880
+									<br />
+
+									Fax: (404) 413-2881
+									<br />
+
+									E-Mail: <a href="mailto:archives@gsu.edu">archives@gsu.edu</a>
+								</p>
+
+								<p>
+									<strong>Mailing Address</strong>:
+									<br />
+
+									Special Collections &amp; Archives
+									<br />
+
+									Georgia State University Library
+									<br />
+
+									100 Decatur Street, SE
+									<br />
+
+									Atlanta, Georgia 30303-3202
+								</p>
+
+								<p>
+									<strong>In Person</strong>:
+									<br />
+
+									Library South, 8th floor
+								</p>
+
+								<p>
+									<a href="http://library.gsu.edu/directory.php?ldept=9">Employee Directory</a>
+								</p>
+
+							</div>
+
+						</div>
+
+						<div class="promofooter">
+							<span class="bg"><span>&nbsp;</span></span>
+						</div>
+
+					</div>
+					<tr>
+						<td>
+						<p>
+							&nbsp;
+						</p></td>
+					</tr>
+
+					<tr>
+						<td>
+						<div class="grid_4XXX" id="rightrailXXX">
+
+							<link href="http://homer.gsu.edu/csslib/shade.css" rel="stylesheet" type="text/css">
+
+							<script type="text/javascript" src="http://homer.gsu.edu/jslib/utils.js"></script>
+
+							<a href="http://www.library.gsu.edu/feedback.php"><img alt="We welcome your feedback!"
+
+							border="0" src="http://www.library.gsu.edu/Right_Rail_Feedback_Link_Nov_2010.jpg" /> </a>
+
+						</td>
+					</tr></table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="clear"></div>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<div id="footer" class="container_16">
+			Georgia State University Library | Mailing Address: 100 Decatur Street Southeast, Atlanta, GA 30303-3202 | Campus P.O. Box #: 3967 | Phone: (404) 413-2820 | Contact: <a href="http://library.gsu.edu/directory.php">Georgia State University Library</a> | Send <a href="http://library.gsu.edu/feedback.php">Georgia State University Library feedback</a>
+			<br/>
+			©2012 Georgia State University | <a href="http://www.gsu.edu/gastate_legal_statement.html">View legal statement</a> | <a href="http://www.gsu.edu/contact.html">Contact us</a> | <a href="http://www.gsu.edu/feedback.html">Send feedback</a>
+		</div>
+
+		</div>
+
+		<!-- Google Tracking -->
+
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+
+			_gaq.push(
+
+			//This is the University's current tracking code
+
+			['_setAccount', 'UA-13240449-1'], ['_trackPageview'],
+
+			//This is the University's old tracking code
+
+			['b._setAccount', 'UA-411467-1'], ['b._trackPageview'], ['c._setAccount', 'UA-4815762-1'], ['c._trackPageview']);
+
+			(function() {
+
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+
+			})();
+
+		</script>
+
+	</body>
+
+</html></body>
+
 </html>
