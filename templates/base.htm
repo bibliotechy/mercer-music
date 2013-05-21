@@ -12,10 +12,8 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" href="/m2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/m2/css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" href="/m2/css/main.css">
-
+		
+	
 		<script src="/m2/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
 		<title>Mercer Discography - Special Collections - Georgia State University Library</title>
@@ -198,6 +196,9 @@
 			var fgreg = "na";
 
 		</script>
+		<link rel="stylesheet" href="/m2/css/main.css">
+		<link rel="stylesheet" href="/m2/css/bootstrap.css">
+	
 
 	</head>
 
@@ -817,7 +818,7 @@
 
 					<div id="content_wrapper" style="float:left;">
 
-						<div id="bodycontent">
+						<div id="bodycontent" class="bootstrap-scope">
 
 							<div class="container">
 								<include href="{{ @header }}" />
@@ -830,15 +831,16 @@
 
 							</div>
 							<!-- /container -->
+						
 
-							<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-							<script>
-								window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>');
-							</script>
-					<script src="/m2/js/jquery-ui.min.js" type="text/javascript"></script>
-
-		<script src="http://library.gsu.edu/ui.tabs.js" type="text/javascript"></script>
+							
+					<script src="http://library.gsu.edu/jquery.min.js" type="text/javascript"></script>
+					<script src="//library.gsu.edu/jquery-ui.min.js" type="text/javascript"></script>
+					<script src="http://library.gsu.edu/ui.tabs.js" type="text/javascript"></script>
         <script>
+       
+        
+        		var slcted = "na";
        			$(function() {
 				$('#tabs').tabs({
 					collapsible : true
@@ -891,9 +893,7 @@
 			});							
 							</script>
 
-							<script src="/m2/js/vendor/bootstrap.min.js"></script>
-
-							<script src="/m2/js/main.js"></script>
+						
 						</div>
 					</div>
 				</div>
@@ -910,6 +910,9 @@
 						}
 
 					</script>
+					
+					
+							<script src="/m2/js/main.js"></script>
 
 					<div class="link_list module bottomup" style="padding-bottom: 0px; margin-bottom:10px;">
 
