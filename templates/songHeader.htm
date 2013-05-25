@@ -1,19 +1,17 @@
 <h2> Johnny Mercer Song Database </h2>
 
-<form class="form-search">
-  <input type="text" class="search-query input-large" placeholder="Keyword Search" />
+<form class="form-search" method="post" 
+    action="">
+  <input type="text" class="search-query input-large" name="query" placeholder="Keyword Search" />
   <button type="submit" class="btn">Search</button>
 </form>
 
 <ul class="nav nav-pills">
   <li>
-    <a href="{{@root}}/songs"> Browse By Song Title</a>
+    <a href="{{@root}}/movie/browse">Browse by Movie Title</a>
   </li>
   <li>
-    <a href="{{@root}}/movies">Browse by Movie Title</a>
-  </li>
-  <li>
-    <a href="{{@root}}/shows">Browse by Show Title</a>
+    <a href="{{@root}}/show/browse">Browse by Show Title</a>
   </li>
 </ul>
 

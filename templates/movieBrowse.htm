@@ -1,0 +1,20 @@
+<h3>Browse Movies</h3>
+<p>
+	<repeat group="{{@data}}" value="{{@movie}}">
+			<h4><a href="{{@root}}/song/{{@movie->ID}}">{{@movie->Title}}</a></h4>
+				<ul class="unstyled">
+				<check if="{{@movie->Lyricist}}">				
+					<li>Lyricist : {{@movie->Lyricist}}</li>
+				</check>
+				<check if="{{@movie->Composer}}">				
+					<li>"Composer : {{@movie->Composer}}"</li>
+				</check>
+				<check if="{{@movie->MovieDate}}">				
+					<li>Date : {{@movie->MovieDate}}</li>
+				</check>
+				<check if="{{@movie->Studio}}">				
+					<li>Studio : {{@movie->Studio}}</li>
+				</check>
+				</ul>
+	</repeat>
+</p>

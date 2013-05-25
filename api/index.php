@@ -17,10 +17,10 @@ $f3->route('/GET /discography/browse/@letter', 'DiscographyBrowse->get');
 $f3->route('/GET /discography', 'BrowseAllDiscography->get');
 $f3->map('/discography/@song', 'DiscographySong');
 
-$f3->route('/GET /movie', 'BrowseAllMovies->get');
+$f3->route('/GET /movie/browse', 'BrowseAllMovies->get');
 $f3->map('/movie/@movie', 'Movie');
 
-$f3->route('/GET /show', 'BrowseAllShows->get');
+$f3->route('/GET /show/browse', 'BrowseAllShows->get');
 $f3->map('/show/@show', 'Show');
 
 $f3->map('/test/@song', 'MyTest');

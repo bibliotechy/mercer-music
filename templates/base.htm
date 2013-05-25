@@ -198,6 +198,16 @@
 		</script>
 		<link rel="stylesheet" href="/m2/css/main.css">
 		<link rel="stylesheet" href="/m2/css/bootstrap.css">
+		<style>
+			.bootstrap-scope ul.inline > li{
+				padding-right: 0;
+			}
+			
+			.dl-horizontal dd {
+				margin-left:180px;
+			}
+		</style>
+
 	
 
 	</head>
@@ -820,7 +830,7 @@
 
 						<div id="bodycontent" class="bootstrap-scope">
 
-							<div class="container">
+							<div>
 								<include href="{{ @header }}" />
 								<include href="{{ @content }}" />
 								<footer>
@@ -838,6 +848,13 @@
 					<script src="//library.gsu.edu/jquery-ui.min.js" type="text/javascript"></script>
 					<script src="http://library.gsu.edu/ui.tabs.js" type="text/javascript"></script>
         <script>
+        
+
+ 	$(".form-search input").keyup(
+ 		function(e){
+ 			$(".form-search").attr("action","{{@root}}/song/search/" + e.target.value)})
+
+
        
         
         		var slcted = "na";
