@@ -49,6 +49,9 @@ class DiscographySong extends Api{
         $song['recordings'][$value['soundID']]['Holdings'][] = $value['name'];
       }
     }
+	else {
+		$song['recordings'][] = array();
+	}
     return $song;
   }
 }

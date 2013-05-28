@@ -14,7 +14,7 @@ class Single extends Page {
 		if (in_array($f3->get('PARAMS.type'), array('song', 'movie', 'show'))) {
 			$this->songdbHeader($f3);
 		}
-		else if ($f3->get('PARAMS.type' == 'discography')){
+		else if ($f3->get('PARAMS.type') == 'discography'){
 			$this->discographyHeader($f3);
 		}
 		else {
@@ -32,7 +32,7 @@ class Single extends Page {
 	}
 
 	public function setData($f3) {
-		if (in_array($f3->get('PARAMS.type'), array('song', 'movie', 'show'))) {
+			if (in_array($f3->get('PARAMS.type'), array('song', 'movie', 'show'))) {
 			$this->setSongdbData($f3);
 		}
 		else {

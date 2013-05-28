@@ -852,7 +852,7 @@
 
  	$(".form-search input").keyup(
  		function(e){
- 			$(".form-search").attr("action","{{@root}}/song/search/" + e.target.value)})
+ 			$(".search-button").attr("href","{{@root}}/song/search/" + encodeURI(e.target.value))})
 
 
        

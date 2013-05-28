@@ -16,9 +16,9 @@ $f3->route('/GET /@type/browse/@query', 'Browse->renderPage');
 
 $f3->route('/GET /@type/browse','Browse->renderPage');
 
-$f3->route('/POST /@type/search/@query', 'Search->renderPage');
+$f3->route('/GET /@type/search/@query', 'Search->renderPage');
 
-//Routing for Single song /  movie / show
+//Routing for Single song /  movie / show / Discography
 $f3->route('/GET /@type/@query', 'Single->renderPage');
 
 
