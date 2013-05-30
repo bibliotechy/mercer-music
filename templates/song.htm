@@ -1,6 +1,6 @@
-<div class="offset1 span11">
+<div >
   <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
-  <dl class="dl-horizontal">
+  <dl>
   	<check if="{{@data->AlternateTitles}}">
   	  <dt>Alternate Titles</dt>
   	  <dd>
@@ -18,21 +18,17 @@
     <check if="{{@data->Movies}}">
       <dt>Movies</dt>
       <dd>
-      	<ul class="unstyled">
       	  <repeat group="{{@data->Movies}}" value="@movie">
-      	    <li><a href="{{@root}}/movie/{{@movie->ID}}">{{@movie->Title}}</a></li>
+      	    <p><a href="{{@root}}/movie/{{@movie->ID}}">{{@movie->Title}}</a></p>
       	  </repeat>
-      	</ul>
       </dd>
     </check>
     <check if="{{@data->Shows}}">
       <dt>Shows</dt>
       <dd>
-      	<ul class="unstyled">
       	  <repeat group="{{@data->Shows}}" value="@show">
-      	    <li><a href="{{@root}}/show/{{@show->ID}}">{{@show->Title}}</a></li>
+      	    <p><a href="{{@root}}/show/{{@show->ID}}">{{@show->Title}}</a></p>
       	  </repeat>
-      	</ul>
       </dd>
     </check>
     <dt>Date</dt>

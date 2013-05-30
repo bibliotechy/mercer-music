@@ -7,13 +7,12 @@ class Browse extends Page {
 		$f3->set('content','templates/' . $f3->get('PARAMS.type') . 'Browse.htm');
 		$data = $this->getData($f3);
 		$f3->set('data', $data);
-        echo $this->template->render($this->base);		
+    echo $this->template->render($this->base);		
 	}
 	
 	public function getPath($f3) {
 		$this->path = $f3->get('apiPath') . "/" . $f3->get('PARAMS.type') . "/browse"; 
 		$this->path .= ($f3->get('PARAMS.query') != null )? '/' . $f3->get('PARAMS.query') : '';
-		print $this->path;
 		return $this->path;
 	}
 	
