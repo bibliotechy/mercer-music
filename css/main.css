@@ -13,7 +13,12 @@ ul.inline li {
 	margin-left: 0;
 }
 
+#page table th !important{
+	background-color: none;
+	color: inherit;
+}
 
+.table {width:100%;}
 
 
 

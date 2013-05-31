@@ -71,8 +71,7 @@
 
 		<!-- CSS Calls -->
 
-		<link href="http://library.gsu.edu/maincss.css" rel="stylesheet" type="text/css" />
-
+		
 		<!--[if IE]>
 
 		<link href="http://library.gsu.edu/ieonly.css" rel="stylesheet" type="text/css" />
@@ -196,6 +195,9 @@
 			var fgreg = "na";
 
 		</script>
+		<!-- Override the default css becuase it forces styles grrrrr.-->
+		<link href="{{@root}}/css/maincss.css" rel="stylesheet" type="text/css" />
+
 		<link rel="stylesheet" href="/m2/css/main.css">
 		<link rel="stylesheet" href="/m2/css/bootstrap.css">
 		<style>
@@ -826,7 +828,7 @@
 
 					<a id="content"></a>
 
-					<div id="content_wrapper" style="float:left;">
+					<div id="content_wrapper" style="float:left;width:100%">
 
 						<div id="bodycontent" class="bootstrap-scope">
 
@@ -848,16 +850,7 @@
 					<script src="//library.gsu.edu/jquery-ui.min.js" type="text/javascript"></script>
 					<script src="http://library.gsu.edu/ui.tabs.js" type="text/javascript"></script>
         <script>
-        
-
- 	$(".form-search input").keyup(
- 		function(e){
- 			$(".search-button").attr("href","{{@root}}/song/search/" + encodeURI(e.target.value))})
-
-
-       
-        
-        		var slcted = "na";
+    	var slcted = "na";
        			$(function() {
 				$('#tabs').tabs({
 					collapsible : true

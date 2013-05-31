@@ -1,6 +1,7 @@
-<div class="offset1 span11">
-  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
-  <dl class="dl-horizontal">
+<div >
+  <dl>
+    <dt>Movie Title</dt>
+    <dd>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</dd>
   	<dt>Lyricist</dt>
   	<dd>{{@data->Lyricist}}</dd>
   	<dt>Composer</dt>
@@ -12,23 +13,17 @@
   	<check if="{{@data->Holdings}}">
   		<dt>GSU has</dt>
   		<dd>
-  			<ul class="unstyled">
   				<repeat group="{{@data->Holdings}}" value="{{@holding}}">
-  					<li>{{@holding->Name}}</li>
+  					<p>{{@holding->Name}}</p>
   				</repeat>
-  				
-  			</ul>
   		</dd>
   	</check>
   	<check if="{{@data->Songs}}">
   		<dt>Songs</dt>
   		<dd>
-  			<ul class="unstyled">
   				<repeat group="{{@data->Songs}}" value="{{@song}}">
-  					<li><a href="{{@root}}/songs/{{@song->ID}}">{{@song->Title}}</a></li>
+  					<p><a href="{{@root}}/songs/{{@song->ID}}">{{@song->Title}}</a></p>
   				</repeat>
-  				
-  			</ul>
   		</dd>
   	</check>	
   </dl>

@@ -1,9 +1,8 @@
 <h2> Johnny Mercer Song Database </h2>
 
-<form class="form-search">
-  <input type="text" class="search-query input-large" placeholder="Keyword Search" />
-  <a href="/" class="search-button btn">Search</a>
-
+<form class="form-search" method="GET" action="{{@root}}/song/search">
+  <input type="text" class="search-query input-large" name="q" placeholder="Keyword Search for songs" />
+   <button type="submit" class="btn">Search</button>
 </form>
   
 

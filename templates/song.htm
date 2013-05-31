@@ -1,14 +1,13 @@
 <div >
-  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
+  <h4></h4>
   <dl>
+    <dt>Song Title</dt>
+    <dd>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</dd>
   	<check if="{{@data->AlternateTitles}}">
   	  <dt>Alternate Titles</dt>
-  	  <dd>
-  		<ul class="unstyled ">
   		  <repeat group="{{@data->AlternateTitles}}" value="{{@title}}">
-  		    <li>{{@title->Title}}</li>
+  		    <p>{{@title->Title}}</p>
   		  </repeat>
-  		</ul>
   	  </dd>
   	</check>
     <dt>Lyricist</dt>
@@ -36,21 +35,17 @@
     <check if="{{@data->Citations}}">
     	<dt>Citations</dt>
     	<dd>
-    		<ul class="unstyled">
     		<repeat group="{{@data->Citations}}" value="{{@citation}}">
-    			<li>{{@citation->Shortname}}</li>
+    			<p>{{@citation->Shortname}}</p>
     		</repeat>
-    		</ul>
     	</dd>
     </check>
     <check if="{{@data->Holdings}}">
     	<dt>GSU has</dt>
     	<dd>
-    		<ul class="unstyled">
     			<repeat group="{{@data->Holdings}}" value="{{@holding}}">
-    				<li>{{@holding->name}}</li>
+    				<p>{{@holding->name}}</p>
     			</repeat>
-    		</ul>
     	</dd>
     </check>
     <check if="{{@data->Notes}}">

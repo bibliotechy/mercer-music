@@ -1,12 +1,19 @@
-<div class="offset1 span11">
-  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
-  <dl class="dl-horizontal">
-  	<dt>Lyricist</dt>
-  	<dd>{{@data->Lyricist}}</dd>
-  	<dt>Composer</dt>
+<div >
+  <dl>
+    <dt>Show Title</dt>
+    <dd> {{isset(@data->Title)? @data->Title : "Title Not Known"}} </dd>
+    <check if="{{@data->Lyricist}}">
+      <dt>Lyricist</dt>
+  	  <dd>{{@data->Lyricist}}</dd>
+    </check>
+    <check if="{{@data->Composer}}">
+    <dt>Composer</dt>
   	<dd>{{@data->Composer}}</dd>
+    </check>
+    <check if="{{@data->ShowDate}}">
   	<dt>Date</dt>
   	<dd>{{@data->ShowDate}}</dd>
+    </check>
   	<check if="{{@data->Notes}}">
   		<dt>Notes</dt>
   		<dd>{{@data->Notes}}</dd>
@@ -18,23 +25,17 @@
   	<check if="{{@data->Holdings}}">
   		<dt>GSU has</dt>
   		<dd>
-  			<ul class="unstyled">
   				<repeat group="{{@data->Holdings}}" value="{{@holding}}">
-  					<li>{{@holding->Name}}</li>
+  					<p>{{@holding->Name}}</p>
   				</repeat>
-  				
-  			</ul>
   		</dd>
   	</check>
   	<check if="{{@data->Songs}}">
   		<dt>Songs</dt>
   		<dd>
-  			<ul class="unstyled">
   				<repeat group="{{@data->Songs}}" value="{{@song}}">
-  					<li><a href="{{@root}}/song/{{@song->ID}}">{{@song->Title}}</a></li>
+  					<p><a href="{{@root}}/song/{{@song->ID}}">{{@song->Title}}</a></p>
   				</repeat>
-  				
-  			</ul>
   		</dd>
   	</check>	
   </dl>

@@ -46,7 +46,7 @@ class DiscographySong extends Api{
     $f3->set('result',$db->exec($sql));
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $value) {
-        $song['recordings'][$value['soundID']]['Holdings'][] = $value['name'];
+        $song['recordings'][$value['soundID']]['Holdings'][] = array("name" => $value['name']);
       }
     }
 	else {

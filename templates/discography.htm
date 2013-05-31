@@ -1,13 +1,86 @@
-<div class="offset1 span11">
-  <h4>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</h4>
-  <dl class="dl-horizontal">
-  	
+<div>
+ <h3>Song Title  : {{isset(@data->Title)? @data->Title : "Title Not Known"}}</h3>
+  
+  <h4>Recordings this song appeard on:</h4>
+
 	<repeat group="{{@data->recordings}}" value="{{@recording}}">
-		<div class="thumbnail">
-		<dt>Performers</dt>
-		<dd>{{@recording->Performers}}</dd>
+    <div class="thumbnail">
+    	<table class="table table-condensed table-striped" style="width:100%">
+    		<tr>
+    			<th style="width:35%;">Recording Title</th>
+    			<td>{{isset(@recording->AlbumTitle)? @recording->AlbumTitle : "Album title not known"}}</td>
+    		</tr>
+    		<tr>
+    			<th>Performers</th>
+    			<td>{{@recording->Performers}}</td>
+    		</tr>
+    		<tr>
+    			<th>Composers</th>
+    			<td>{{@recording->Composers}}</td>
+    		</tr>
+    		<check if="{{@recording->LabelName}}">
+    		<tr>
+    			<th>Label Name</th>
+    			<td>{{@recording->LabelName}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->IssueNumber}}">
+    		<tr>
+    			<th>Issue Number</th>
+    			<td>{{@recording->IssueNumber}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->MatrixNumber}}">
+    		<tr>
+    			<th>Matrix Number</th>
+    			<td>{{@recording->MatrixNumber}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->SessionDate}}">
+    		<tr>
+    			<th>Session Date</th>
+    			<td>{{@recording->SessionDate}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->Citation}}">
+    		<tr>
+    			<th>Citation</th>
+    			<td>{{@recording->Citation}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->Location}}">
+    		<tr>
+    			<th>Location</th>
+    			<td>{{@recording->Location}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->RecordingTime}}">
+    		<tr>
+    			<th>Recording Time</th>
+    			<td>{{@recording->RecordingTime}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->Notes}}">
+    		<tr>
+    			<th>Notes</th>
+    			<td>{{@recording->Notes}}</td>
+    		</tr>
+    		</check>
+    		<check if="{{@recording->Holdings}}">
+    		<tr>
+    			<th>Holdings</th>
+    			<td>
+    				<repeat group="{{@recording->Holdings}}" value="@holding">
+    				    {{@holding->name}}<br />
+    			    </repeat>
+    			</td>
+    		</tr>
+    		</check>
+
+    	</table>
 		</div>
+		<br />
 	</repeat>
-  </dl>
  </div>
+
 
