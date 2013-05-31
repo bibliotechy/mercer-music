@@ -1,20 +1,10 @@
 <h2> Johnny Mercer Song Database </h2>
 
 <form class="form-search" method="GET" action="{{@root}}/song/search">
-  <input type="text" class="search-query input-large" name="q" placeholder="Keyword Search for songs" />
-   <button type="submit" class="btn">Search</button>
+  <input type="text" class="search-query input-large" name="q" placeholder="Keyword Search" />
+   <button type="submit" class="btn">Search for songs</button>
 </form>
-  
-
-<ul class="nav nav-pills">
-  <li>
-    <a href="{{@root}}/movie/browse">Browse by Movie Title</a>
-  </li>
-  <li>
-    <a href="{{@root}}/show/browse">Browse by Show Title</a>
-  </li>
-</ul>
-
+<h4>Browse Songs Alphabetically</h4>
 <ul class="inline">
   <li><a href="{{@root}}/song/browse/a">A</a></li>
   <li><a href="{{@root}}/song/browse/b">B</a></li>
@@ -43,6 +33,12 @@
   <li><a href="{{@root}}/song/browse/y">Y</a></li>
   <li><a href="{{@root}}/song/browse/z">Z</a></li>
 </ul>
-<hr>
-
+<ul class="nav nav-pills">
+  <li>
+    <a href="{{@root}}/movie/browse">Browse by Movie Title</a>
+  </li>
+  <li>
+    <a href="{{@root}}/show/browse">Browse by Show Title</a>
+  </li>
+</ul>
 

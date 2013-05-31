@@ -1,20 +1,19 @@
 <h3>Browse Movies</h3>
-<p>
+<table class="table table-striped" style="width:100%">
+	<tr>
+		<th>Title</th>
+		<th>Lyricist</th>
+		<th>Composer</th>
+		<th>Date</th>
+		<th>Studio</th>
+	</tr>
 	<repeat group="{{@data}}" value="{{@movie}}">
-			<h4><a href="{{@root}}/song/{{@movie->ID}}">{{@movie->Title}}</a></h4>
-				<ul class="unstyled">
-				<check if="{{@movie->Lyricist}}">				
-					<li>Lyricist : {{@movie->Lyricist}}</li>
-				</check>
-				<check if="{{@movie->Composer}}">				
-					<li>"Composer : {{@movie->Composer}}"</li>
-				</check>
-				<check if="{{@movie->MovieDate}}">				
-					<li>Date : {{@movie->MovieDate}}</li>
-				</check>
-				<check if="{{@movie->Studio}}">				
-					<li>Studio : {{@movie->Studio}}</li>
-				</check>
-				</ul>
+		<tr>
+			<td><a href="{{@root}}/song/{{@movie->ID}}">{{@movie->Title}}</a></td>
+            <td>{{@movie->Lyricist}}</td>
+            <td>{{@movie->Composer}}</td>
+			<td>{{@movie->MovieDate}}</td>
+			<td>{{@movie->Studio}}</td>
+	    </tr>
 	</repeat>
-</p>
+</table>

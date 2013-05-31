@@ -11,18 +11,21 @@ $f3->set('root', '/m2');
 $f3->set('apiPath', "/m2/api");
 
 
+$f3->route('/GET /@type', 'Landing->renderPage');
+
 // Soung and Discography Browse by Letter
 $f3->route('/GET /@type/browse/@query', 'Browse->renderPage');
 
 $f3->route('/GET /@type/browse','Browse->renderPage');
 
 // redirect for search, to allow bookmarking searches with pretty urls.
-// essentially just redirects to next search route.
+// essentially just redirects to next routing function below.
 $f3->route('GET /@type/search?q=@query', 
 		function($f3) {
 			$dest = '/' . $f3->get('PARAMS.type') . '/search/' . $f3->get('PARAMS.query');
 			$f3->reroute($dest);
 		});
+
 $f3->route('/GET /@type/search/@query', 'Search->renderPage');
 
 //Routing for Single song /  movie / show / Discography

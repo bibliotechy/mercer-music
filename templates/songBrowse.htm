@@ -1,16 +1,17 @@
 <h3>Songs Beginning with {{strtoupper(@PARAMS.query)}}</h3>
-<ul class="unstyled">
+<table class="table table-striped" style="width:100%">
+	<tr>
+		<th>Title</th>
+		<th>Lyricist</th>
+		<th>Composer</th>
+		<th>Date</th>
+	</tr>
 	<repeat group="{{@data}}" value="{{@song}}">
-		<li>
-			<h4><a href="{{@root}}/song/{{@song->ID}}">{{@song->Title}}</a></h4>
-			<dl class="dl-horizontal">
-				<dt>Lyricist</dt>
-				<dd>{{@song->Lyricist}}</dd>
-				<dt>Composer</dt>
-				<dd>{{@song->Composer}}</dd>
-				<dt>Year</dt>
-				<dd>{{@song->Copyright}}</dd>
-			</dl>
-		</li>
+		<tr>
+			<td><a href="{{@root}}/song/{{@song->ID}}">{{@song->Title}}</a></td>
+			<td>{{@song->Lyricist}}</td>
+			<td>{{@song->Composer}}</td>
+			<td>{{@song->Copyright}}</td>
+		</tr>
 	</repeat>
-</ul>
+</table>

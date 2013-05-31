@@ -15,19 +15,6 @@ class Search extends Page {
 		$this->path .= "/search/" . $f3->get('PARAMS.query');
 		return $this->path;
 	}
-	
-	public function setHeader($f3) {
-		if ($f3->get('PARAMS.type') == 'song') {
-			$f3->set('header', 'templates/songHeader.htm');
-		}
-		else if ($f3->get('PARAMS.type') == 'discography') {
-			$f3->set('header', 'templates/discographyHeader.htm');
-		}
-		else {
-			//raise a 404
-		}	
-	}
-	
 }
 
 ?>
