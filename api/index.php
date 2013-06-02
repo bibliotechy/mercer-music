@@ -12,7 +12,9 @@ $f3->route('/GET /song/browse/@letter', 'SongBrowse->get');
 $f3->route('/GET /song', 'BrowseAllSongs->get');
 $f3->map('/song/@song', 'Song');
 
+$f3->route('/GET /discography/search/@query/@fm/@fy/@tm/@ty' , 'DiscographyDateSearch->get');
 $f3->route('/GET /discography/search/@query', 'DiscographySearch->get');
+
 $f3->route('/GET /discography/browse/@letter', 'DiscographyBrowse->get');
 $f3->route('/GET /discography', 'BrowseAllDiscography->get');
 $f3->map('/discography/@song', 'DiscographySong');
