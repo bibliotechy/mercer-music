@@ -25,7 +25,7 @@ $f3->route('GET /@type/search?q=@query*',
 		function($f3) {
 			if ($_GET['fy'] != "00" || $_GET['ty'] != "00"){
 				$dest = '/' . $f3->get('PARAMS.type') . '/search/' . $_GET['q'];
-				$dest .= '/from/'. $_GET['fm'] . '/' . $_GET['fy'] . '/to/' . $_GET['tm'] . '/' . $_GET['ty'];
+				$dest .= '/'. $_GET['fm'] . '/' . $_GET['fy'] . '/' . $_GET['tm'] . '/' . $_GET['ty'];
 				$f3->reroute($dest);
 			}
 			else {
