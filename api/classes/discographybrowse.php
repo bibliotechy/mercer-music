@@ -9,18 +9,19 @@
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = $db->quote($f3->get('PARAMS.letter'));
-		$sql = "SELECT s.ID,s.Title
+      $letter = $db->quote($f3->get('PARAMS.letter') . "%");
+      $theletter = $db->quote("The " . $f3->get('PARAMS.letter') . "%");
+		  $sql = "SELECT s.ID,s.Title
             FROM ms s JOIN md_sound d on s.ID = d.songID 
-    	      WHERE (Title LIKE '" . $query . "%'
-				    OR Title LIKE 'The" . $query . "%')
+    	      WHERE (Title LIKE $letter
+            OR Title LIKE $theletter)
             AND d.songType = 1
 				    AND d.Suppress != 1
 				    UNION
 				    SELECT g.ID, g.Title
 				    FROM md_song g JOIN  md_sound d on g.ID = d.songID
-				    WHERE (Title LIKE '" . $query . "%'
-            OR Title LIKE 'The" . $query . "%')
+				    WHERE (Title LIKE $letter
+            OR Title LIKE $theletter)
             AND d.songType = 0
 				    AND d.Suppress != 1";
     $f3->set('result', $db->exec($sql));

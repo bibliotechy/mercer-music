@@ -9,14 +9,13 @@ class BrowseAllDiscography extends Api {
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = $db->quote($f3->get('PARAMS.letter'));
-		$sql = "SELECT ID,Title
-    	        FROM ms
-    	        WHERE Suppress <> 1
-				UNION
-				SELECT ID, Title
-				FROM md_song
-				WHERE 1";
+		$sql = "(SELECT ID,Title
+    	      FROM ms
+    	      WHERE Suppress <> 1)
+				    UNION
+				    (SELECT ID, Title
+				    FROM md_song
+				    WHERE 1)";
         $f3->set('result', $db->exec($sql));
 		foreach ($f3->get('result') as $key => $value) {
 			$result[] = $value;

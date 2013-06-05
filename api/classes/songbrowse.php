@@ -9,13 +9,14 @@ Class SongBrowse extends Api {
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = $db->quote($f3->get('PARAMS.letter'));
-		$sql = "SELECT ID, Title, Copyright, Lyricist, Composer, Published, Awards, Notes 
+      $letter = $db->quote($f3->get('PARAMS.letter') . '%');
+      $theletter = $db->quote('The ' . $f3->get('PARAMS.letter') . '%');
+		  $sql = "SELECT ID, Title, Copyright, Lyricist, Composer, Published, Awards, Notes 
     	        FROM ms
-    	        WHERE (Title like '" . $query . "%'
-				OR Title like 'The" . $query . "%')
-				AND Suppress <> 1";
-        $f3->set('result', $db->exec($sql));
+    	        WHERE (Title like $letter
+				      OR Title like $theletter)
+				      AND Suppress <> 1";
+    $f3->set('result', $db->exec($sql));
 		foreach ($f3->get('result') as $key => $value) {
 			$result[] = $value;
 		}
