@@ -26,9 +26,17 @@ class Show extends Api {
   	        JOIN ms_j_showholding j on j.holdingID = h.ID 
             WHERE  j.showID =?";
     $f3->set('result',$db->exec($sql, $f3->get('PARAMS.show')));
-	foreach ($f3->get('result') as $key => $value) {
-		$show[0]['Holdings'][] = $value;
-	}
+    if ($f3->get('result')) {
+      foreach ($f3->get('result') as $key => $value) {
+	    $show[0]['Holdings'][] = $value;
+     }
+    }
+    else {
+      $show[0]['Holdings'] = array();
+    }
+
+
+
 	return $show;
   }
   
