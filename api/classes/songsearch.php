@@ -9,7 +9,7 @@ class SongSearch extends Api {
 
     public static function getBaseSearchResults($f3, $result, $db) {
     	
-		$query = mysql_real_escape_string($f3->get('PARAMS.query'));	
+		$query = $db->quote($f3->get('PARAMS.query'));	
     	$sql = "SELECT ID, Title, Copyright, Lyricist, Composer, Published, Awards, Notes 
     	        FROM ms 
     	        WHERE (Title LIKE '%" . $query . "%' 

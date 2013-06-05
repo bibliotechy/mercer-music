@@ -9,7 +9,7 @@ class BrowseAllDiscography extends Api {
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = mysql_real_escape_string($f3->get('PARAMS.letter'));
+		$query = $db->quote($f3->get('PARAMS.letter'));
 		$sql = "SELECT ID,Title
     	        FROM ms
     	        WHERE Suppress <> 1

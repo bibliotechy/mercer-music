@@ -9,7 +9,7 @@ Class SongBrowse extends Api {
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = mysql_real_escape_string($f3->get('PARAMS.letter'));
+		$query = $db->quote($f3->get('PARAMS.letter'));
 		$sql = "SELECT ID, Title, Copyright, Lyricist, Composer, Published, Awards, Notes 
     	        FROM ms
     	        WHERE (Title like '" . $query . "%'

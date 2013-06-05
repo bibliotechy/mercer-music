@@ -9,8 +9,8 @@ Class BrowseAllSongs extends Api {
 
     public static function getBaseBrowseResults($f3, $result, $db) {
     	
-		$query = mysql_real_escape_string($f3->get('PARAMS.letter'));
-		$sql = "SELECT ID, Title, Copyright, Lyricist, Composer, Published, Awards, Notes 
+		$query = $db->quote($f3->get('PARAMS.letter'));
+		$sql = "SELECT ID 
     	        FROM ms
     	        WHERE Suppress <> 1";
         $f3->set('result', $db->exec($sql));
