@@ -12,7 +12,7 @@ class DateSearch extends Page {
 	
 	public function getPath($f3) {
 		$this->path = $f3->get('apiPath') . "/" . $f3->get('PARAMS.type'); 
-		$this->path .= '/search/' . $f3->get('PARAMS.query') . '/';
+		$this->path .= '/search/' . urlencode($f3->get('PARAMS.query')) . '/';
 		$this->path .= $f3->get('PARAMS.fromMonth') . '/' . $f3->get('PARAMS.fromYear') . '/';
 		$this->path .=  $f3->get('PARAMS.toMonth') . '/' . $f3->get('PARAMS.toYear');
 		return $this->path;
