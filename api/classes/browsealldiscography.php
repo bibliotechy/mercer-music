@@ -15,7 +15,8 @@ class BrowseAllDiscography extends Api {
 				    UNION
 				    (SELECT ID, Title
 				    FROM md_song
-				    WHERE 1)";
+            WHERE 1)
+            ORDER BY Title";
         $f3->set('result', $db->exec($sql));
 		foreach ($f3->get('result') as $key => $value) {
 			$result[] = $value;

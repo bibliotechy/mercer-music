@@ -9,13 +9,14 @@ class BrowseAllShows extends Api {
 	
 	public static function getAllShows($f3, $shows, $db){
 		$sql = "SELECT * 
-  	            FROM ms_shows 
-  	            WHERE Suppress <> 1";
-	$f3->set('result',$db->exec($sql));
-	foreach ($f3->get('result') as $value) {
-		$shows[] =$value;
+  	        FROM ms_shows 
+  	        WHERE Suppress != 1
+            ORDER BY Title";
+	  $f3->set('result',$db->exec($sql));
+	  foreach ($f3->get('result') as $value) {
+		  $shows[] =$value;
 		}
-	return $shows;
+	  return $shows;
 	}
 }
 

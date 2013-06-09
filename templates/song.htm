@@ -1,19 +1,20 @@
 <div >
   <h4></h4>
-  <dl>
+  <dl class="dl-horizontal">
     <dt>Song Title</dt>
     <dd>{{isset(@data->Title)? @data->Title : "Title Not Known"}}</dd>
   	<check if="{{@data->AlternateTitles}}">
   	  <dt>Alternate Titles</dt>
-  		  <repeat group="{{@data->AlternateTitles}}" value="{{@title}}">
+      <dd>
+      <repeat group="{{@data->AlternateTitles}}" value="{{@title}}">
   		    <p>{{@title->Title}}</p>
   		  </repeat>
   	  </dd>
   	</check>
     <dt>Lyricist</dt>
-    <dd>{{@data->Lyricist}}</dd>
+    <dd>{{isset(@data->Lyricist)? @data->Lyricist : "Lyricist not known"}}</dd>
     <dt>Composer</dt>
-    <dd>{{@data->Composer}}</dd>
+    <dd>{{isset(@data->Composer)? @data->Composer : "Composer not known"}}</dd>
     <check if="{{@data->Movies}}">
       <dt>Movies</dt>
       <dd>
@@ -36,7 +37,9 @@
     	<dt>Citations</dt>
     	<dd>
     		<repeat group="{{@data->Citations}}" value="{{@citation}}">
-    			<p>{{@citation->Shortname}}</p>
+            <p>
+            {{@citation->Shortname}}
+            </p>
     		</repeat>
     	</dd>
     </check>
@@ -44,7 +47,7 @@
     	<dt>GSU has</dt>
     	<dd>
     			<repeat group="{{@data->Holdings}}" value="{{@holding}}">
-    				<p>{{@holding->name}}</p>
+            <p> {{@holding->name}}</p>
     			</repeat>
     	</dd>
     </check>

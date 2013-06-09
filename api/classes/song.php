@@ -53,7 +53,7 @@ class Song extends Api{
   }
 
   public static function getHoldingsInfo($f3, $song, $db) {
-    $sql = "SELECT h.name 
+    $sql = "SELECT h.name, h.ID
             FROM ms_holdings h 
             JOIN ms_j_songholding j ON j.holdingID = h.ID
             WHERE j.SongID =" . $f3->get('PARAMS.song');
