@@ -46,8 +46,11 @@
     <check if="{{@data->Holdings}}">
     	<dt>GSU has</dt>
     	<dd>
-    			<repeat group="{{@data->Holdings}}" value="{{@holding}}">
-            <p> {{@holding->name}}</p>
+      <repeat group="{{@data->Holdings}}" value="{{@holding}}">
+          <p>
+          {{(isset(@holding->recording) && @holding->recording == 'true')? "<a href='@root/discography/@data->ID'>@holding->name</a>" :
+          @holding->name}}
+          </p>
     			</repeat>
     	</dd>
     </check>

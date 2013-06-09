@@ -61,6 +61,9 @@ class Song extends Api{
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
         $song[0]['Holdings'][$key] = $value;
+        if ($value['ID'] == 7){
+          $song[0]['Holdings'][$key]['recording'] = Song::hasSoundRecording($f3,$db);
+        }
       }
     }
 	else {
@@ -111,5 +114,15 @@ class Song extends Api{
 	}
 	return $song;
  }
+
+  public static function hasSoundRecording($f3, $db) {
+    $sql = "SELECT ID from md_sound
+            WHERE songID = :song
+            LIMIT 1";
+    $f3->set('result', $db->exec($sql, array(":song" => $f3->get('PARAMS.song'))));
+    $isRecording = ($f3->get('result'))? 'true' : 'false';
+    return $isRecording;
+
+  }
 }
 ?>
