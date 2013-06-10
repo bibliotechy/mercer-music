@@ -14,7 +14,10 @@ class DiscographySearch extends Api {
     	        FROM ms s JOIN md_sound d on s.ID = d.songID 
     	        WHERE (Title LIKE $query 
 				      OR Composer LIKE $query
-				      OR Lyricist LIKE $query)
+				      OR Lyricist LIKE $query
+              OR Awards LIKE $query
+              OR s.Notes LIKE $query
+              OR Copyright LIKE $query)
 				      AND d.songType = 1
 		          AND s.Suppress != 1)
 		          UNION
@@ -24,7 +27,12 @@ class DiscographySearch extends Api {
 		          WHERE (g.Title LIKE $query 
 				      OR d.Composers LIKE $query
 				      OR d.Performers LIKE $query
-				      OR d.AlbumTitle LIKE $query)
+              OR d.AlbumTitle LIKE $query
+              OR d.LabelName LIKE $query
+              OR d.IssueNumber LIKE $query
+              OR d.MatrixNumber LIKE $query
+              OR d.SessionDate LIKE $query
+              OR d.IssueNumber LIKE $query)
 		          AND d.songType = 0
               AND Suppress != 1)
               ORDER BY Title";
