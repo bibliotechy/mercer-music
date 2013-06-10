@@ -15,7 +15,8 @@ Class SongBrowse extends Api {
     	        FROM ms
     	        WHERE (Title like $letter
 				      OR Title like $theletter)
-				      AND Suppress <> 1";
+              AND Suppress != 1
+              ORDER BY Title";
     $f3->set('result', $db->exec($sql));
 		foreach ($f3->get('result') as $key => $value) {
 			$result[] = $value;

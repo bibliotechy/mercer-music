@@ -15,7 +15,8 @@ class SongSearch extends Api {
     	        WHERE (Title LIKE $query 
 				      OR Composer LIKE $query
 				      OR Lyricist LIKE $query)
-		          AND Suppress <> 1";
+              AND Suppress <> 1
+              ORDER BY Title";
 		$f3->set('result', $db->exec($sql));
 		foreach ($f3->get('result') as $key => $value) {
 			$result[] = $value;
