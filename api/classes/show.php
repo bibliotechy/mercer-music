@@ -46,9 +46,14 @@ class Show extends Api {
   	        JOIN ms_j_songshow j on s.ID = j.songID
   	        WHERE j.showID =?";
 	$f3->set('result',$db->exec($sql,  $f3->get('PARAMS.show')));
-	foreach ($f3->get('result') as $key => $value) {
+    if ($f3->get('result')) {
+      foreach ($f3->get('result') as $key => $value) {
 		$show[0]['Songs'][] = $value;
-	}
+      }
+    }
+    else {
+      $show[0]['Songs'] = array();
+    }
 	return $show;
   }
 }
