@@ -44,14 +44,14 @@ class DiscographySong extends Api{
             JOIN md_sound s ON s.ID = j.soundID
             WHERE s.songID =" . $f3->get('PARAMS.song');
     $f3->set('result',$db->exec($sql));
-    if ($f3->get('result')) {
-      foreach ($f3->get('result')  as $value) {
-        $song['recordings'][$value['soundID']]['Holdings'][] = array("name" => $value['name']);
-      }
+    $holdings = array();
+    foreach ($f3->get('result')  as $value) {
+      $holdings[$value['soundID']] = $value['name'];
     }
-	else {
-		$song['recordings'][] = array();
-	}
+    foreach ($song['recordings'] as $id => $rec) {
+      $song['recordings'][$id]['Holdings'][] = (isset($holdings[$rec['ID']])? 
+        array("name" => $holdings[$rec['ID']]) : "");
+    }
     return $song;
   }
 }

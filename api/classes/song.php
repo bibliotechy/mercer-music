@@ -61,7 +61,7 @@ class Song extends Api{
     if ($f3->get('result')) {
       foreach ($f3->get('result')  as $key => $value) {
         $song[0]['Holdings'][$key] = $value;
-        if ($value['ID'] == 7){
+        if (in_array($value['ID'], array(7, 9))){
           $song[0]['Holdings'][$key]['recording'] = Song::hasSoundRecording($f3,$db);
         }
       }
